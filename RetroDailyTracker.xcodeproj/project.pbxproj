@@ -1,0 +1,730 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0569919D8BA3E8CDD699F6A7 /* NotificationPermissionMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C669909087B4E1F76BD9768A /* NotificationPermissionMonitor.swift */; };
+		06AAAFABCD4185DEC48F446F /* AnimalImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41175EDF28809518848FE717 /* AnimalImageCache.swift */; };
+		083E49EF0F362B198797AFD6 /* WorkEntryValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFCBED4AA8F05AA1D94A624 /* WorkEntryValidator.swift */; };
+		1190739C2C80AC4741E22E03 /* DailyTrackerWidget.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 81A764A7979AE4F25D911934 /* DailyTrackerWidget.appex */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1BC8F73C0B678AF376545BA9 /* AddNoteIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBC923F47FBD6DF7B6403C3 /* AddNoteIntent.swift */; };
+		2128AD70D394F555261648EE /* SerializationPropertyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3417900111DF779DBF4C34A9 /* SerializationPropertyTests.swift */; };
+		21B41CC2BB2174A0948D67CC /* SpreadsheetRowSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17657EFEDEB4D5E05253F311 /* SpreadsheetRowSerializer.swift */; };
+		2A7277B9A349C53AB1356D20 /* WorkEntryValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFCBED4AA8F05AA1D94A624 /* WorkEntryValidator.swift */; };
+		2B455B35471A3B3BFA91340B /* PersistenceStoreProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CE5F345043E45AAA363510E /* PersistenceStoreProtocol.swift */; };
+		2E47E9B989CD0648105A2B6C /* AnimalPictureService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441BCAE61EFAA203B5CFF36E /* AnimalPictureService.swift */; };
+		2F316F317B583326B9404B77 /* WorkEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6A5CC5B538FDD24EFEF18FF /* WorkEntry.swift */; };
+		349E00189CA03B462AF96950 /* ReminderServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B6EE53C0425F2CE417BBFB /* ReminderServiceProtocol.swift */; };
+		39CCBC0B1AB6D2E488BCE0A9 /* AnimalImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41175EDF28809518848FE717 /* AnimalImageCache.swift */; };
+		3A5D4367DAB3C805F1BEAF4C /* ReminderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907C2D29E8E4C9EFD12E2FB0 /* ReminderService.swift */; };
+		487D852DC17ACC0803034175 /* SpreadsheetServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF0D6D2E63DBC7998173B2F /* SpreadsheetServiceProtocol.swift */; };
+		49EA0ACFE291EB3FA6F174B1 /* WorkEntryValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFCBED4AA8F05AA1D94A624 /* WorkEntryValidator.swift */; };
+		5E3A705BF96ECED708E17373 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3ED6E27EA8C212DE6557190 /* HistoryView.swift */; };
+		5F8247F4F0DC6AC4EA35C7F1 /* SpreadsheetConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56366DAE04F4455BFBDF669A /* SpreadsheetConfig.swift */; };
+		628B54B12748D4437DA12A1B /* AnimalImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41175EDF28809518848FE717 /* AnimalImageCache.swift */; };
+		6A3F1AF4C40052939EB85B39 /* SpreadsheetService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC99261699B4147AB75D30F /* SpreadsheetService.swift */; };
+		75BD69B44C96D259ED128C65 /* ReminderServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B6EE53C0425F2CE417BBFB /* ReminderServiceProtocol.swift */; };
+		7789593EE97972FE996F30C7 /* SpreadsheetServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF0D6D2E63DBC7998173B2F /* SpreadsheetServiceProtocol.swift */; };
+		77C1C5408E03703E8B7A4774 /* SpreadsheetConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56366DAE04F4455BFBDF669A /* SpreadsheetConfig.swift */; };
+		78B5180325FD8EF86EE867DE /* WorkEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6A5CC5B538FDD24EFEF18FF /* WorkEntry.swift */; };
+		8213F9595C17070035F35593 /* SpreadsheetConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56366DAE04F4455BFBDF669A /* SpreadsheetConfig.swift */; };
+		89780EF9950CC795EC52977F /* DailyTrackerTimelineProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C9A1078057A7F6CA66C3995 /* DailyTrackerTimelineProvider.swift */; };
+		8EB1B66A9E36A45668E0AD74 /* NotificationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F012FDFFCDFA9A78B0240A44 /* NotificationDelegate.swift */; };
+		900A88C07E7E5548CADFEB28 /* DailyTrackerWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E60784443E7F462369DD586 /* DailyTrackerWidget.swift */; };
+		919850A529F259C698D32557 /* SpreadsheetRowSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17657EFEDEB4D5E05253F311 /* SpreadsheetRowSerializer.swift */; };
+		94A05748B1606C6A49ECABC5 /* AnimalPictureServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED49AC6BD60496DD131B76D /* AnimalPictureServiceProtocol.swift */; };
+		A19DD6625CDE6FD0C127A733 /* SpreadsheetRowSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17657EFEDEB4D5E05253F311 /* SpreadsheetRowSerializer.swift */; };
+		AE28EEBDE8336BEBE77089BB /* ReminderServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B6EE53C0425F2CE417BBFB /* ReminderServiceProtocol.swift */; };
+		B178B5BA6E31D62F6DB6459F /* DailyTrackerWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE90FE64D8299E8637647ED8 /* DailyTrackerWidgetView.swift */; };
+		B4F52D006D4528AEEB4D884D /* AnimalPictureService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441BCAE61EFAA203B5CFF36E /* AnimalPictureService.swift */; };
+		C0E6A3B13E0721465CDE9799 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AF0A6AB15F2227D60765A1 /* SettingsView.swift */; };
+		C204AA8CD4F9D55F794A4EE7 /* RetroDailyTrackerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DCF3E130059DD294636321 /* RetroDailyTrackerApp.swift */; };
+		C37CD89CB5BEBA818CF54816 /* WorkEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6A5CC5B538FDD24EFEF18FF /* WorkEntry.swift */; };
+		C861BE994022A9D4C9ECD411 /* PersistenceStoreProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CE5F345043E45AAA363510E /* PersistenceStoreProtocol.swift */; };
+		CC0B6A4C824D22417AB20F65 /* AnimalPictureServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED49AC6BD60496DD131B76D /* AnimalPictureServiceProtocol.swift */; };
+		D14EFFB22C688B3E8DE435B3 /* SpreadsheetServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF0D6D2E63DBC7998173B2F /* SpreadsheetServiceProtocol.swift */; };
+		D7B13EE6B9BF4E5C30E7D4A1 /* EntryFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39C32609310F32101EC7EB1 /* EntryFormView.swift */; };
+		DB6EEA4B019751BB5574E8EC /* AnimalPictureServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31AD7E248A56F6B3858ADD17 /* AnimalPictureServiceTests.swift */; };
+		DB73495014DA65D8D786D6A6 /* PersistenceStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A589452E48311810549C28 /* PersistenceStore.swift */; };
+		DD5A5FA884EBA480687FC759 /* PersistenceStoreProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CE5F345043E45AAA363510E /* PersistenceStoreProtocol.swift */; };
+		F2CDB39CB6036D25E2F5A4DC /* AnimalPictureService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441BCAE61EFAA203B5CFF36E /* AnimalPictureService.swift */; };
+		F5C15EE86F0385AC0F91189B /* FetchAnimalIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8EAD4CB3550B02200348F0 /* FetchAnimalIntent.swift */; };
+		FA83AC04CA008D266DBA8403 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12137117C94CE284481F404E /* ContentView.swift */; };
+		FDF4EBDC967F8F181B3956A8 /* AnimalPictureServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED49AC6BD60496DD131B76D /* AnimalPictureServiceProtocol.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		88A04A5BB6ABC8C8C7DE7ADF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 433CAED685BE3EE491F28BAB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 920C5391082F262A5317BC1C;
+			remoteInfo = RetroDailyTracker;
+		};
+		96F17DD0F644E61E0A045740 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 433CAED685BE3EE491F28BAB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3DF712A499A186E4B49A13AA;
+			remoteInfo = DailyTrackerWidget;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		EB786584A81201C369FD90F1 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				1190739C2C80AC4741E22E03 /* DailyTrackerWidget.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		03AF0A6AB15F2227D60765A1 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		12137117C94CE284481F404E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		17657EFEDEB4D5E05253F311 /* SpreadsheetRowSerializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpreadsheetRowSerializer.swift; sourceTree = "<group>"; };
+		2BC99261699B4147AB75D30F /* SpreadsheetService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpreadsheetService.swift; sourceTree = "<group>"; };
+		2DBC923F47FBD6DF7B6403C3 /* AddNoteIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNoteIntent.swift; sourceTree = "<group>"; };
+		31AD7E248A56F6B3858ADD17 /* AnimalPictureServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalPictureServiceTests.swift; sourceTree = "<group>"; };
+		3417900111DF779DBF4C34A9 /* SerializationPropertyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerializationPropertyTests.swift; sourceTree = "<group>"; };
+		3E8EAD4CB3550B02200348F0 /* FetchAnimalIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchAnimalIntent.swift; sourceTree = "<group>"; };
+		41175EDF28809518848FE717 /* AnimalImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalImageCache.swift; sourceTree = "<group>"; };
+		441BCAE61EFAA203B5CFF36E /* AnimalPictureService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalPictureService.swift; sourceTree = "<group>"; };
+		4EFCBED4AA8F05AA1D94A624 /* WorkEntryValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkEntryValidator.swift; sourceTree = "<group>"; };
+		50DCF3E130059DD294636321 /* RetroDailyTrackerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetroDailyTrackerApp.swift; sourceTree = "<group>"; };
+		56366DAE04F4455BFBDF669A /* SpreadsheetConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpreadsheetConfig.swift; sourceTree = "<group>"; };
+		5DF0D6D2E63DBC7998173B2F /* SpreadsheetServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpreadsheetServiceProtocol.swift; sourceTree = "<group>"; };
+		669F83CE292485765DFE98DA /* RetroDailyTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RetroDailyTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6C9A1078057A7F6CA66C3995 /* DailyTrackerTimelineProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTrackerTimelineProvider.swift; sourceTree = "<group>"; };
+		6CE5F345043E45AAA363510E /* PersistenceStoreProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceStoreProtocol.swift; sourceTree = "<group>"; };
+		81A764A7979AE4F25D911934 /* DailyTrackerWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = DailyTrackerWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		8E60784443E7F462369DD586 /* DailyTrackerWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTrackerWidget.swift; sourceTree = "<group>"; };
+		907C2D29E8E4C9EFD12E2FB0 /* ReminderService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderService.swift; sourceTree = "<group>"; };
+		9724F4E17017956616EB8903 /* RetroDailyTrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RetroDailyTrackerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A3ED6E27EA8C212DE6557190 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
+		B6A5CC5B538FDD24EFEF18FF /* WorkEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkEntry.swift; sourceTree = "<group>"; };
+		C39C32609310F32101EC7EB1 /* EntryFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryFormView.swift; sourceTree = "<group>"; };
+		C669909087B4E1F76BD9768A /* NotificationPermissionMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationPermissionMonitor.swift; sourceTree = "<group>"; };
+		CED49AC6BD60496DD131B76D /* AnimalPictureServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalPictureServiceProtocol.swift; sourceTree = "<group>"; };
+		D9A589452E48311810549C28 /* PersistenceStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceStore.swift; sourceTree = "<group>"; };
+		EE90FE64D8299E8637647ED8 /* DailyTrackerWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTrackerWidgetView.swift; sourceTree = "<group>"; };
+		F012FDFFCDFA9A78B0240A44 /* NotificationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationDelegate.swift; sourceTree = "<group>"; };
+		F3B6EE53C0425F2CE417BBFB /* ReminderServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderServiceProtocol.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		1A2A68E053ABFBB54C37A4B8 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				41175EDF28809518848FE717 /* AnimalImageCache.swift */,
+				441BCAE61EFAA203B5CFF36E /* AnimalPictureService.swift */,
+				56366DAE04F4455BFBDF669A /* SpreadsheetConfig.swift */,
+				17657EFEDEB4D5E05253F311 /* SpreadsheetRowSerializer.swift */,
+				B6A5CC5B538FDD24EFEF18FF /* WorkEntry.swift */,
+				5F8A8E6E679FF05D10DA8DC1 /* Protocols */,
+				6796D78A1DF61AAA70ED6101 /* Validation */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		1ABFBDE130E953C249A531EB /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C39C32609310F32101EC7EB1 /* EntryFormView.swift */,
+				A3ED6E27EA8C212DE6557190 /* HistoryView.swift */,
+				03AF0A6AB15F2227D60765A1 /* SettingsView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		26929DD330AC3F1A7E61557B /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				F012FDFFCDFA9A78B0240A44 /* NotificationDelegate.swift */,
+			);
+			path = Delegates;
+			sourceTree = "<group>";
+		};
+		2BFCE9077207623D8E9E390C /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				6C9A1078057A7F6CA66C3995 /* DailyTrackerTimelineProvider.swift */,
+				8E60784443E7F462369DD586 /* DailyTrackerWidget.swift */,
+				EE90FE64D8299E8637647ED8 /* DailyTrackerWidgetView.swift */,
+				3471F21D7B814E84B5001052 /* Intents */,
+			);
+			name = Sources;
+			path = DailyTrackerWidget/Sources;
+			sourceTree = "<group>";
+		};
+		3471F21D7B814E84B5001052 /* Intents */ = {
+			isa = PBXGroup;
+			children = (
+				2DBC923F47FBD6DF7B6403C3 /* AddNoteIntent.swift */,
+				3E8EAD4CB3550B02200348F0 /* FetchAnimalIntent.swift */,
+			);
+			path = Intents;
+			sourceTree = "<group>";
+		};
+		4BA7E4ED1923D58067CCC3ED /* UnitTests */ = {
+			isa = PBXGroup;
+			children = (
+				31AD7E248A56F6B3858ADD17 /* AnimalPictureServiceTests.swift */,
+			);
+			path = UnitTests;
+			sourceTree = "<group>";
+		};
+		5DC6348FED5924F3D9EFE2AB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				81A764A7979AE4F25D911934 /* DailyTrackerWidget.appex */,
+				669F83CE292485765DFE98DA /* RetroDailyTracker.app */,
+				9724F4E17017956616EB8903 /* RetroDailyTrackerTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5F8A8E6E679FF05D10DA8DC1 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				CED49AC6BD60496DD131B76D /* AnimalPictureServiceProtocol.swift */,
+				6CE5F345043E45AAA363510E /* PersistenceStoreProtocol.swift */,
+				F3B6EE53C0425F2CE417BBFB /* ReminderServiceProtocol.swift */,
+				5DF0D6D2E63DBC7998173B2F /* SpreadsheetServiceProtocol.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		6796D78A1DF61AAA70ED6101 /* Validation */ = {
+			isa = PBXGroup;
+			children = (
+				4EFCBED4AA8F05AA1D94A624 /* WorkEntryValidator.swift */,
+			);
+			path = Validation;
+			sourceTree = "<group>";
+		};
+		7FB16695C79C0BBEB6CA4C0E /* RetroDailyTrackerTests */ = {
+			isa = PBXGroup;
+			children = (
+				E3515618869732F5C9F1441B /* PropertyTests */,
+				4BA7E4ED1923D58067CCC3ED /* UnitTests */,
+			);
+			path = RetroDailyTrackerTests;
+			sourceTree = "<group>";
+		};
+		AC8F835B15625E9795005C42 = {
+			isa = PBXGroup;
+			children = (
+				7FB16695C79C0BBEB6CA4C0E /* RetroDailyTrackerTests */,
+				1A2A68E053ABFBB54C37A4B8 /* Shared */,
+				2BFCE9077207623D8E9E390C /* Sources */,
+				C5CA6D272AA16B522E18012F /* Sources */,
+				5DC6348FED5924F3D9EFE2AB /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B37958A87CF67DB7BD4CA790 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				C669909087B4E1F76BD9768A /* NotificationPermissionMonitor.swift */,
+				D9A589452E48311810549C28 /* PersistenceStore.swift */,
+				907C2D29E8E4C9EFD12E2FB0 /* ReminderService.swift */,
+				2BC99261699B4147AB75D30F /* SpreadsheetService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		C5CA6D272AA16B522E18012F /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				12137117C94CE284481F404E /* ContentView.swift */,
+				50DCF3E130059DD294636321 /* RetroDailyTrackerApp.swift */,
+				26929DD330AC3F1A7E61557B /* Delegates */,
+				B37958A87CF67DB7BD4CA790 /* Services */,
+				1ABFBDE130E953C249A531EB /* Views */,
+			);
+			name = Sources;
+			path = RetroDailyTracker/Sources;
+			sourceTree = "<group>";
+		};
+		E3515618869732F5C9F1441B /* PropertyTests */ = {
+			isa = PBXGroup;
+			children = (
+				3417900111DF779DBF4C34A9 /* SerializationPropertyTests.swift */,
+			);
+			path = PropertyTests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3DF712A499A186E4B49A13AA /* DailyTrackerWidget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 48FD2AFA1D8C715361A54621 /* Build configuration list for PBXNativeTarget "DailyTrackerWidget" */;
+			buildPhases = (
+				4B24AFAE3909DEF5AFA4568F /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DailyTrackerWidget;
+			packageProductDependencies = (
+			);
+			productName = DailyTrackerWidget;
+			productReference = 81A764A7979AE4F25D911934 /* DailyTrackerWidget.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		6A593B1DCA62461776EB647B /* RetroDailyTrackerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A3C05724EFDCA160542C31B4 /* Build configuration list for PBXNativeTarget "RetroDailyTrackerTests" */;
+			buildPhases = (
+				EE7EE97027E23C801E5E2612 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E8250B7875A8AA7E71D5E2A2 /* PBXTargetDependency */,
+			);
+			name = RetroDailyTrackerTests;
+			packageProductDependencies = (
+			);
+			productName = RetroDailyTrackerTests;
+			productReference = 9724F4E17017956616EB8903 /* RetroDailyTrackerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		920C5391082F262A5317BC1C /* RetroDailyTracker */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 106E2F58AB3DAF75FC166286 /* Build configuration list for PBXNativeTarget "RetroDailyTracker" */;
+			buildPhases = (
+				0706BEEF1671B0070383EC75 /* Sources */,
+				EB786584A81201C369FD90F1 /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				842FA01A70F0F94F6A0F1BA8 /* PBXTargetDependency */,
+			);
+			name = RetroDailyTracker;
+			packageProductDependencies = (
+			);
+			productName = RetroDailyTracker;
+			productReference = 669F83CE292485765DFE98DA /* RetroDailyTracker.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		433CAED685BE3EE491F28BAB /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					3DF712A499A186E4B49A13AA = {
+						DevelopmentTeam = "";
+						ProvisioningStyle = Automatic;
+					};
+					6A593B1DCA62461776EB647B = {
+						DevelopmentTeam = "";
+						ProvisioningStyle = Automatic;
+					};
+					920C5391082F262A5317BC1C = {
+						DevelopmentTeam = "";
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 1A65D5AC0827D75921326719 /* Build configuration list for PBXProject "RetroDailyTracker" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = AC8F835B15625E9795005C42;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 5DC6348FED5924F3D9EFE2AB /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				920C5391082F262A5317BC1C /* RetroDailyTracker */,
+				6A593B1DCA62461776EB647B /* RetroDailyTrackerTests */,
+				3DF712A499A186E4B49A13AA /* DailyTrackerWidget */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0706BEEF1671B0070383EC75 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				39CCBC0B1AB6D2E488BCE0A9 /* AnimalImageCache.swift in Sources */,
+				B4F52D006D4528AEEB4D884D /* AnimalPictureService.swift in Sources */,
+				CC0B6A4C824D22417AB20F65 /* AnimalPictureServiceProtocol.swift in Sources */,
+				FA83AC04CA008D266DBA8403 /* ContentView.swift in Sources */,
+				D7B13EE6B9BF4E5C30E7D4A1 /* EntryFormView.swift in Sources */,
+				5E3A705BF96ECED708E17373 /* HistoryView.swift in Sources */,
+				8EB1B66A9E36A45668E0AD74 /* NotificationDelegate.swift in Sources */,
+				0569919D8BA3E8CDD699F6A7 /* NotificationPermissionMonitor.swift in Sources */,
+				DB73495014DA65D8D786D6A6 /* PersistenceStore.swift in Sources */,
+				C861BE994022A9D4C9ECD411 /* PersistenceStoreProtocol.swift in Sources */,
+				3A5D4367DAB3C805F1BEAF4C /* ReminderService.swift in Sources */,
+				AE28EEBDE8336BEBE77089BB /* ReminderServiceProtocol.swift in Sources */,
+				C204AA8CD4F9D55F794A4EE7 /* RetroDailyTrackerApp.swift in Sources */,
+				C0E6A3B13E0721465CDE9799 /* SettingsView.swift in Sources */,
+				77C1C5408E03703E8B7A4774 /* SpreadsheetConfig.swift in Sources */,
+				A19DD6625CDE6FD0C127A733 /* SpreadsheetRowSerializer.swift in Sources */,
+				6A3F1AF4C40052939EB85B39 /* SpreadsheetService.swift in Sources */,
+				487D852DC17ACC0803034175 /* SpreadsheetServiceProtocol.swift in Sources */,
+				C37CD89CB5BEBA818CF54816 /* WorkEntry.swift in Sources */,
+				2A7277B9A349C53AB1356D20 /* WorkEntryValidator.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4B24AFAE3909DEF5AFA4568F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1BC8F73C0B678AF376545BA9 /* AddNoteIntent.swift in Sources */,
+				06AAAFABCD4185DEC48F446F /* AnimalImageCache.swift in Sources */,
+				2E47E9B989CD0648105A2B6C /* AnimalPictureService.swift in Sources */,
+				FDF4EBDC967F8F181B3956A8 /* AnimalPictureServiceProtocol.swift in Sources */,
+				89780EF9950CC795EC52977F /* DailyTrackerTimelineProvider.swift in Sources */,
+				900A88C07E7E5548CADFEB28 /* DailyTrackerWidget.swift in Sources */,
+				B178B5BA6E31D62F6DB6459F /* DailyTrackerWidgetView.swift in Sources */,
+				F5C15EE86F0385AC0F91189B /* FetchAnimalIntent.swift in Sources */,
+				DD5A5FA884EBA480687FC759 /* PersistenceStoreProtocol.swift in Sources */,
+				349E00189CA03B462AF96950 /* ReminderServiceProtocol.swift in Sources */,
+				8213F9595C17070035F35593 /* SpreadsheetConfig.swift in Sources */,
+				919850A529F259C698D32557 /* SpreadsheetRowSerializer.swift in Sources */,
+				7789593EE97972FE996F30C7 /* SpreadsheetServiceProtocol.swift in Sources */,
+				78B5180325FD8EF86EE867DE /* WorkEntry.swift in Sources */,
+				083E49EF0F362B198797AFD6 /* WorkEntryValidator.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EE7EE97027E23C801E5E2612 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				628B54B12748D4437DA12A1B /* AnimalImageCache.swift in Sources */,
+				F2CDB39CB6036D25E2F5A4DC /* AnimalPictureService.swift in Sources */,
+				94A05748B1606C6A49ECABC5 /* AnimalPictureServiceProtocol.swift in Sources */,
+				DB6EEA4B019751BB5574E8EC /* AnimalPictureServiceTests.swift in Sources */,
+				2B455B35471A3B3BFA91340B /* PersistenceStoreProtocol.swift in Sources */,
+				75BD69B44C96D259ED128C65 /* ReminderServiceProtocol.swift in Sources */,
+				2128AD70D394F555261648EE /* SerializationPropertyTests.swift in Sources */,
+				5F8247F4F0DC6AC4EA35C7F1 /* SpreadsheetConfig.swift in Sources */,
+				21B41CC2BB2174A0948D67CC /* SpreadsheetRowSerializer.swift in Sources */,
+				D14EFFB22C688B3E8DE435B3 /* SpreadsheetServiceProtocol.swift in Sources */,
+				2F316F317B583326B9404B77 /* WorkEntry.swift in Sources */,
+				49EA0ACFE291EB3FA6F174B1 /* WorkEntryValidator.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		842FA01A70F0F94F6A0F1BA8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3DF712A499A186E4B49A13AA /* DailyTrackerWidget */;
+			targetProxy = 96F17DD0F644E61E0A045740 /* PBXContainerItemProxy */;
+		};
+		E8250B7875A8AA7E71D5E2A2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 920C5391082F262A5317BC1C /* RetroDailyTracker */;
+			targetProxy = 88A04A5BB6ABC8C8C7DE7ADF /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		1632356C74E712C01188E699 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.retro.dailytracker.tests;
+				PRODUCT_NAME = RetroDailyTrackerTests;
+				SDKROOT = macosx;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RetroDailyTracker.app/Contents/MacOS/RetroDailyTracker";
+			};
+			name = Debug;
+		};
+		4E3B6E1C0491D527A26E2890 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = DailyTrackerWidget/DailyTrackerWidget.entitlements;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				INFOPLIST_FILE = DailyTrackerWidget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.retro.dailytracker.widget;
+				PRODUCT_NAME = DailyTrackerWidget;
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+			};
+			name = Release;
+		};
+		53389541C197F4207731E3F8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.retro.dailytracker.tests;
+				PRODUCT_NAME = RetroDailyTrackerTests;
+				SDKROOT = macosx;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RetroDailyTracker.app/Contents/MacOS/RetroDailyTracker";
+			};
+			name = Release;
+		};
+		928445D9DDFAA8DBF1C2BF91 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = RetroDailyTracker/RetroDailyTracker.entitlements;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_GENERATION_MODE = GeneratedFile;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.retro.dailytracker;
+				PRODUCT_NAME = RetroDailyTracker;
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+			};
+			name = Release;
+		};
+		BF9907BAF89A2A0CB65EAC85 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.9;
+			};
+			name = Debug;
+		};
+		C5E9283D4E6260CBCB9616B9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = DailyTrackerWidget/DailyTrackerWidget.entitlements;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				INFOPLIST_FILE = DailyTrackerWidget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.retro.dailytracker.widget;
+				PRODUCT_NAME = DailyTrackerWidget;
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+			};
+			name = Debug;
+		};
+		CB477DE30CD9AF54D1F73868 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = RetroDailyTracker/RetroDailyTracker.entitlements;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_GENERATION_MODE = GeneratedFile;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.retro.dailytracker;
+				PRODUCT_NAME = RetroDailyTracker;
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+			};
+			name = Debug;
+		};
+		DFD85CEB9D137FE56775F784 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = "";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.9;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		106E2F58AB3DAF75FC166286 /* Build configuration list for PBXNativeTarget "RetroDailyTracker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CB477DE30CD9AF54D1F73868 /* Debug */,
+				928445D9DDFAA8DBF1C2BF91 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		1A65D5AC0827D75921326719 /* Build configuration list for PBXProject "RetroDailyTracker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BF9907BAF89A2A0CB65EAC85 /* Debug */,
+				DFD85CEB9D137FE56775F784 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		48FD2AFA1D8C715361A54621 /* Build configuration list for PBXNativeTarget "DailyTrackerWidget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C5E9283D4E6260CBCB9616B9 /* Debug */,
+				4E3B6E1C0491D527A26E2890 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		A3C05724EFDCA160542C31B4 /* Build configuration list for PBXNativeTarget "RetroDailyTrackerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1632356C74E712C01188E699 /* Debug */,
+				53389541C197F4207731E3F8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 433CAED685BE3EE491F28BAB /* Project object */;
+}

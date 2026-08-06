@@ -1,0 +1,500 @@
+{
+  "pbtResults": {
+    "5.3 Write property test for spreadsheet serialization": {
+      "status": "passed",
+      "lastRunTimestamp": 1784726612172
+    }
+  },
+  "executionHistory": {
+    "1.1 Create Xcode project with Companion App and Widget Extension targets": [
+      {
+        "executionId": "21158ee5-0472-44ff-9cb5-0fe7857f627d",
+        "chatSessionId": "sess_d0e4f479-3cb4-4830-9baf-5fb325e39df1",
+        "timestamp": 1784642554933
+      },
+      {
+        "executionId": "21158ee5-0472-44ff-9cb5-0fe7857f627d",
+        "chatSessionId": "sess_d0e4f479-3cb4-4830-9baf-5fb325e39df1",
+        "timestamp": 1784642570496
+      },
+      {
+        "executionId": "21158ee5-0472-44ff-9cb5-0fe7857f627d",
+        "chatSessionId": "sess_d0e4f479-3cb4-4830-9baf-5fb325e39df1",
+        "timestamp": 1784646242577
+      }
+    ],
+    "1.2 Define core data models and protocols": [
+      {
+        "executionId": "21158ee5-0472-44ff-9cb5-0fe7857f627d",
+        "chatSessionId": "sess_d0e4f479-3cb4-4830-9baf-5fb325e39df1",
+        "timestamp": 1784642555035
+      },
+      {
+        "executionId": "21158ee5-0472-44ff-9cb5-0fe7857f627d",
+        "chatSessionId": "sess_d0e4f479-3cb4-4830-9baf-5fb325e39df1",
+        "timestamp": 1784646246418
+      },
+      {
+        "executionId": "21158ee5-0472-44ff-9cb5-0fe7857f627d",
+        "chatSessionId": "sess_d0e4f479-3cb4-4830-9baf-5fb325e39df1",
+        "timestamp": 1784646467284
+      }
+    ],
+    "1.3 Define service protocols": [
+      {
+        "executionId": "21158ee5-0472-44ff-9cb5-0fe7857f627d",
+        "chatSessionId": "sess_d0e4f479-3cb4-4830-9baf-5fb325e39df1",
+        "timestamp": 1784642555099
+      },
+      {
+        "executionId": "21158ee5-0472-44ff-9cb5-0fe7857f627d",
+        "chatSessionId": "sess_d0e4f479-3cb4-4830-9baf-5fb325e39df1",
+        "timestamp": 1784646247288
+      },
+      {
+        "executionId": "21158ee5-0472-44ff-9cb5-0fe7857f627d",
+        "chatSessionId": "sess_d0e4f479-3cb4-4830-9baf-5fb325e39df1",
+        "timestamp": 1784646468044
+      }
+    ],
+    "2.1 Implement PersistenceStore with SwiftData": [
+      {
+        "executionId": "21158ee5-0472-44ff-9cb5-0fe7857f627d",
+        "chatSessionId": "sess_d0e4f479-3cb4-4830-9baf-5fb325e39df1",
+        "timestamp": 1784642555120
+      },
+      {
+        "executionId": "21158ee5-0472-44ff-9cb5-0fe7857f627d",
+        "chatSessionId": "sess_d0e4f479-3cb4-4830-9baf-5fb325e39df1",
+        "timestamp": 1784646472405
+      },
+      {
+        "executionId": "21158ee5-0472-44ff-9cb5-0fe7857f627d",
+        "chatSessionId": "sess_d0e4f479-3cb4-4830-9baf-5fb325e39df1",
+        "timestamp": 1784646594136
+      }
+    ],
+    "2.2 Implement WorkEntry validation logic": [
+      {
+        "executionId": "21158ee5-0472-44ff-9cb5-0fe7857f627d",
+        "chatSessionId": "sess_d0e4f479-3cb4-4830-9baf-5fb325e39df1",
+        "timestamp": 1784642555144
+      },
+      {
+        "executionId": "21158ee5-0472-44ff-9cb5-0fe7857f627d",
+        "chatSessionId": "sess_d0e4f479-3cb4-4830-9baf-5fb325e39df1",
+        "timestamp": 1784646473270
+      },
+      {
+        "executionId": "21158ee5-0472-44ff-9cb5-0fe7857f627d",
+        "chatSessionId": "sess_d0e4f479-3cb4-4830-9baf-5fb325e39df1",
+        "timestamp": 1784646594963
+      }
+    ],
+    "3. Checkpoint - Ensure data layer tests pass": [
+      {
+        "executionId": "21158ee5-0472-44ff-9cb5-0fe7857f627d",
+        "chatSessionId": "sess_d0e4f479-3cb4-4830-9baf-5fb325e39df1",
+        "timestamp": 1784642555191
+      },
+      {
+        "executionId": "21158ee5-0472-44ff-9cb5-0fe7857f627d",
+        "chatSessionId": "sess_d0e4f479-3cb4-4830-9baf-5fb325e39df1",
+        "timestamp": 1784646608411
+      },
+      {
+        "executionId": "21158ee5-0472-44ff-9cb5-0fe7857f627d",
+        "chatSessionId": "sess_d0e4f479-3cb4-4830-9baf-5fb325e39df1",
+        "timestamp": 1784646714164
+      }
+    ],
+    "4.1 Implement ReminderService with UNUserNotificationCenter": [
+      {
+        "executionId": "21158ee5-0472-44ff-9cb5-0fe7857f627d",
+        "chatSessionId": "sess_d0e4f479-3cb4-4830-9baf-5fb325e39df1",
+        "timestamp": 1784642555218
+      },
+      {
+        "executionId": "21158ee5-0472-44ff-9cb5-0fe7857f627d",
+        "chatSessionId": "sess_d0e4f479-3cb4-4830-9baf-5fb325e39df1",
+        "timestamp": 1784646609352
+      },
+      {
+        "executionId": "21158ee5-0472-44ff-9cb5-0fe7857f627d",
+        "chatSessionId": "sess_d0e4f479-3cb4-4830-9baf-5fb325e39df1",
+        "timestamp": 1784646715025
+      }
+    ],
+    "4.3 Implement NotificationDelegate for tap handling": [
+      {
+        "executionId": "21158ee5-0472-44ff-9cb5-0fe7857f627d",
+        "chatSessionId": "sess_d0e4f479-3cb4-4830-9baf-5fb325e39df1",
+        "timestamp": 1784642555245
+      },
+      {
+        "executionId": "21158ee5-0472-44ff-9cb5-0fe7857f627d",
+        "chatSessionId": "sess_d0e4f479-3cb4-4830-9baf-5fb325e39df1",
+        "timestamp": 1784646744256
+      },
+      {
+        "executionId": "21158ee5-0472-44ff-9cb5-0fe7857f627d",
+        "chatSessionId": "sess_d0e4f479-3cb4-4830-9baf-5fb325e39df1",
+        "timestamp": 1784647333203
+      }
+    ],
+    "5.1 Implement OAuth authentication flow": [
+      {
+        "executionId": "21158ee5-0472-44ff-9cb5-0fe7857f627d",
+        "chatSessionId": "sess_d0e4f479-3cb4-4830-9baf-5fb325e39df1",
+        "timestamp": 1784642555275
+      },
+      {
+        "executionId": "21158ee5-0472-44ff-9cb5-0fe7857f627d",
+        "chatSessionId": "sess_d0e4f479-3cb4-4830-9baf-5fb325e39df1",
+        "timestamp": 1784646745158
+      },
+      {
+        "executionId": "21158ee5-0472-44ff-9cb5-0fe7857f627d",
+        "chatSessionId": "sess_d0e4f479-3cb4-4830-9baf-5fb325e39df1",
+        "timestamp": 1784647334017
+      }
+    ],
+    "5.2 Implement spreadsheet row write and update operations": [
+      {
+        "executionId": "21158ee5-0472-44ff-9cb5-0fe7857f627d",
+        "chatSessionId": "sess_d0e4f479-3cb4-4830-9baf-5fb325e39df1",
+        "timestamp": 1784642555299
+      },
+      {
+        "executionId": "abca109e-5415-419e-8ee5-8542fb7e177d",
+        "chatSessionId": "sess_934b1284-f451-4ce4-9c71-5e95eb8f8b90",
+        "timestamp": 1784653145780
+      },
+      {
+        "executionId": "abca109e-5415-419e-8ee5-8542fb7e177d",
+        "chatSessionId": "sess_934b1284-f451-4ce4-9c71-5e95eb8f8b90",
+        "timestamp": 1784726335057
+      }
+    ],
+    "6.1 Implement AnimalPictureService with fallback chain": [
+      {
+        "executionId": "21158ee5-0472-44ff-9cb5-0fe7857f627d",
+        "chatSessionId": "sess_d0e4f479-3cb4-4830-9baf-5fb325e39df1",
+        "timestamp": 1784642555319
+      },
+      {
+        "executionId": "21158ee5-0472-44ff-9cb5-0fe7857f627d",
+        "chatSessionId": "sess_d0e4f479-3cb4-4830-9baf-5fb325e39df1",
+        "timestamp": 1784646746064
+      },
+      {
+        "executionId": "21158ee5-0472-44ff-9cb5-0fe7857f627d",
+        "chatSessionId": "sess_d0e4f479-3cb4-4830-9baf-5fb325e39df1",
+        "timestamp": 1784647227984
+      }
+    ],
+    "7. Checkpoint - Ensure all service tests pass": [
+      {
+        "executionId": "21158ee5-0472-44ff-9cb5-0fe7857f627d",
+        "chatSessionId": "sess_d0e4f479-3cb4-4830-9baf-5fb325e39df1",
+        "timestamp": 1784642555347
+      },
+      {
+        "executionId": "abca109e-5415-419e-8ee5-8542fb7e177d",
+        "chatSessionId": "sess_934b1284-f451-4ce4-9c71-5e95eb8f8b90",
+        "timestamp": 1784726871997
+      },
+      {
+        "executionId": "abca109e-5415-419e-8ee5-8542fb7e177d",
+        "chatSessionId": "sess_934b1284-f451-4ce4-9c71-5e95eb8f8b90",
+        "timestamp": 1784727114552
+      }
+    ],
+    "8.1 Implement Entry Form view": [
+      {
+        "executionId": "21158ee5-0472-44ff-9cb5-0fe7857f627d",
+        "chatSessionId": "sess_d0e4f479-3cb4-4830-9baf-5fb325e39df1",
+        "timestamp": 1784642555369
+      },
+      {
+        "executionId": "abca109e-5415-419e-8ee5-8542fb7e177d",
+        "chatSessionId": "sess_934b1284-f451-4ce4-9c71-5e95eb8f8b90",
+        "timestamp": 1784726872612
+      },
+      {
+        "executionId": "abca109e-5415-419e-8ee5-8542fb7e177d",
+        "chatSessionId": "sess_934b1284-f451-4ce4-9c71-5e95eb8f8b90",
+        "timestamp": 1784727115623
+      }
+    ],
+    "8.2 Implement Settings view": [
+      {
+        "executionId": "21158ee5-0472-44ff-9cb5-0fe7857f627d",
+        "chatSessionId": "sess_d0e4f479-3cb4-4830-9baf-5fb325e39df1",
+        "timestamp": 1784642555392
+      },
+      {
+        "executionId": "abca109e-5415-419e-8ee5-8542fb7e177d",
+        "chatSessionId": "sess_934b1284-f451-4ce4-9c71-5e95eb8f8b90",
+        "timestamp": 1784726873395
+      },
+      {
+        "executionId": "abca109e-5415-419e-8ee5-8542fb7e177d",
+        "chatSessionId": "sess_934b1284-f451-4ce4-9c71-5e95eb8f8b90",
+        "timestamp": 1784727116392
+      }
+    ],
+    "8.3 Implement History view": [
+      {
+        "executionId": "21158ee5-0472-44ff-9cb5-0fe7857f627d",
+        "chatSessionId": "sess_d0e4f479-3cb4-4830-9baf-5fb325e39df1",
+        "timestamp": 1784642555439
+      },
+      {
+        "executionId": "abca109e-5415-419e-8ee5-8542fb7e177d",
+        "chatSessionId": "sess_934b1284-f451-4ce4-9c71-5e95eb8f8b90",
+        "timestamp": 1784726874198
+      },
+      {
+        "executionId": "abca109e-5415-419e-8ee5-8542fb7e177d",
+        "chatSessionId": "sess_934b1284-f451-4ce4-9c71-5e95eb8f8b90",
+        "timestamp": 1784727117205
+      }
+    ],
+    "8.4 Implement main App structure and navigation": [
+      {
+        "executionId": "21158ee5-0472-44ff-9cb5-0fe7857f627d",
+        "chatSessionId": "sess_d0e4f479-3cb4-4830-9baf-5fb325e39df1",
+        "timestamp": 1784642555461
+      },
+      {
+        "executionId": "abca109e-5415-419e-8ee5-8542fb7e177d",
+        "chatSessionId": "sess_934b1284-f451-4ce4-9c71-5e95eb8f8b90",
+        "timestamp": 1784727127539
+      }
+    ],
+    "9.1 Implement Widget timeline provider and views": [
+      {
+        "executionId": "21158ee5-0472-44ff-9cb5-0fe7857f627d",
+        "chatSessionId": "sess_d0e4f479-3cb4-4830-9baf-5fb325e39df1",
+        "timestamp": 1784642555482
+      },
+      {
+        "executionId": "abca109e-5415-419e-8ee5-8542fb7e177d",
+        "chatSessionId": "sess_934b1284-f451-4ce4-9c71-5e95eb8f8b90",
+        "timestamp": 1784726875006
+      },
+      {
+        "executionId": "abca109e-5415-419e-8ee5-8542fb7e177d",
+        "chatSessionId": "sess_934b1284-f451-4ce4-9c71-5e95eb8f8b90",
+        "timestamp": 1784727118083
+      }
+    ],
+    "9.2 Implement App Intents for widget interactivity": [
+      {
+        "executionId": "21158ee5-0472-44ff-9cb5-0fe7857f627d",
+        "chatSessionId": "sess_d0e4f479-3cb4-4830-9baf-5fb325e39df1",
+        "timestamp": 1784642555502
+      },
+      {
+        "executionId": "abca109e-5415-419e-8ee5-8542fb7e177d",
+        "chatSessionId": "sess_934b1284-f451-4ce4-9c71-5e95eb8f8b90",
+        "timestamp": 1784727128421
+      }
+    ],
+    "10. Checkpoint - Ensure app builds and widget renders": [
+      {
+        "executionId": "21158ee5-0472-44ff-9cb5-0fe7857f627d",
+        "chatSessionId": "sess_d0e4f479-3cb4-4830-9baf-5fb325e39df1",
+        "timestamp": 1784642555525
+      },
+      {
+        "executionId": "2183044f-5c1c-4b74-bf1e-aae13a46c40c",
+        "chatSessionId": "sess_bd0041c7-dfbc-4171-b25b-54f8dd2504f6",
+        "timestamp": 1786048103169
+      },
+      {
+        "executionId": "2183044f-5c1c-4b74-bf1e-aae13a46c40c",
+        "chatSessionId": "sess_bd0041c7-dfbc-4171-b25b-54f8dd2504f6",
+        "timestamp": 1786048267128
+      }
+    ],
+    "11.1 Wire SpreadsheetService sync into entry submission flow": [
+      {
+        "executionId": "21158ee5-0472-44ff-9cb5-0fe7857f627d",
+        "chatSessionId": "sess_d0e4f479-3cb4-4830-9baf-5fb325e39df1",
+        "timestamp": 1784642555547
+      },
+      {
+        "executionId": "779d7658-5875-4ac5-bf10-8e9faacdb29d",
+        "chatSessionId": "sess_3d22d6da-3970-4dc4-a554-84223111e2bf",
+        "timestamp": 1786048292635
+      },
+      {
+        "executionId": "779d7658-5875-4ac5-bf10-8e9faacdb29d",
+        "chatSessionId": "sess_3d22d6da-3970-4dc4-a554-84223111e2bf",
+        "timestamp": 1786048501116
+      }
+    ],
+    "11.2 Wire ReminderService into app lifecycle": [
+      {
+        "executionId": "21158ee5-0472-44ff-9cb5-0fe7857f627d",
+        "chatSessionId": "sess_d0e4f479-3cb4-4830-9baf-5fb325e39df1",
+        "timestamp": 1784642555568
+      },
+      {
+        "executionId": "779d7658-5875-4ac5-bf10-8e9faacdb29d",
+        "chatSessionId": "sess_3d22d6da-3970-4dc4-a554-84223111e2bf",
+        "timestamp": 1786048293364
+      },
+      {
+        "executionId": "779d7658-5875-4ac5-bf10-8e9faacdb29d",
+        "chatSessionId": "sess_3d22d6da-3970-4dc4-a554-84223111e2bf",
+        "timestamp": 1786048501874
+      }
+    ],
+    "11.3 Implement data retention purge on app launch": [
+      {
+        "executionId": "21158ee5-0472-44ff-9cb5-0fe7857f627d",
+        "chatSessionId": "sess_d0e4f479-3cb4-4830-9baf-5fb325e39df1",
+        "timestamp": 1784642555586
+      },
+      {
+        "executionId": "779d7658-5875-4ac5-bf10-8e9faacdb29d",
+        "chatSessionId": "sess_3d22d6da-3970-4dc4-a554-84223111e2bf",
+        "timestamp": 1786048294175
+      },
+      {
+        "executionId": "779d7658-5875-4ac5-bf10-8e9faacdb29d",
+        "chatSessionId": "sess_3d22d6da-3970-4dc4-a554-84223111e2bf",
+        "timestamp": 1786048502730
+      }
+    ],
+    "11.4 Update README.md with project documentation": [
+      {
+        "executionId": "21158ee5-0472-44ff-9cb5-0fe7857f627d",
+        "chatSessionId": "sess_d0e4f479-3cb4-4830-9baf-5fb325e39df1",
+        "timestamp": 1784642555609
+      },
+      {
+        "executionId": "779d7658-5875-4ac5-bf10-8e9faacdb29d",
+        "chatSessionId": "sess_3d22d6da-3970-4dc4-a554-84223111e2bf",
+        "timestamp": 1786048294940
+      },
+      {
+        "executionId": "779d7658-5875-4ac5-bf10-8e9faacdb29d",
+        "chatSessionId": "sess_3d22d6da-3970-4dc4-a554-84223111e2bf",
+        "timestamp": 1786048503463
+      }
+    ],
+    "12. Final checkpoint - Ensure all tests pass and app builds cleanly": [
+      {
+        "executionId": "21158ee5-0472-44ff-9cb5-0fe7857f627d",
+        "chatSessionId": "sess_d0e4f479-3cb4-4830-9baf-5fb325e39df1",
+        "timestamp": 1784642555631
+      }
+    ],
+    "1. Set up Xcode project structure and shared framework": [
+      {
+        "executionId": "21158ee5-0472-44ff-9cb5-0fe7857f627d",
+        "chatSessionId": "sess_d0e4f479-3cb4-4830-9baf-5fb325e39df1",
+        "timestamp": 1784646468068
+      }
+    ],
+    "2. Implement PersistenceStore and data validation": [
+      {
+        "executionId": "21158ee5-0472-44ff-9cb5-0fe7857f627d",
+        "chatSessionId": "sess_d0e4f479-3cb4-4830-9baf-5fb325e39df1",
+        "timestamp": 1784646594987
+      }
+    ],
+    "2.3 Write property tests for WorkEntry validation": [
+      {
+        "executionId": "21158ee5-0472-44ff-9cb5-0fe7857f627d",
+        "chatSessionId": "sess_d0e4f479-3cb4-4830-9baf-5fb325e39df1",
+        "timestamp": 1784646739298
+      },
+      {
+        "executionId": "21158ee5-0472-44ff-9cb5-0fe7857f627d",
+        "chatSessionId": "sess_d0e4f479-3cb4-4830-9baf-5fb325e39df1",
+        "timestamp": 1784647353129
+      }
+    ],
+    "2.4 Write property tests for PersistenceStore append and purge": [
+      {
+        "executionId": "21158ee5-0472-44ff-9cb5-0fe7857f627d",
+        "chatSessionId": "sess_d0e4f479-3cb4-4830-9baf-5fb325e39df1",
+        "timestamp": 1784646740272
+      }
+    ],
+    "4. Implement ReminderService": [
+      {
+        "executionId": "21158ee5-0472-44ff-9cb5-0fe7857f627d",
+        "chatSessionId": "sess_d0e4f479-3cb4-4830-9baf-5fb325e39df1",
+        "timestamp": 1784647333233
+      }
+    ],
+    "4.2 Write property tests for ReminderService scheduling": [
+      {
+        "executionId": "21158ee5-0472-44ff-9cb5-0fe7857f627d",
+        "chatSessionId": "sess_d0e4f479-3cb4-4830-9baf-5fb325e39df1",
+        "timestamp": 1784647353987
+      }
+    ],
+    "5.3 Write property test for spreadsheet serialization": [
+      {
+        "executionId": "abca109e-5415-419e-8ee5-8542fb7e177d",
+        "chatSessionId": "sess_934b1284-f451-4ce4-9c71-5e95eb8f8b90",
+        "timestamp": 1784653125423
+      },
+      {
+        "executionId": "abca109e-5415-419e-8ee5-8542fb7e177d",
+        "chatSessionId": "sess_934b1284-f451-4ce4-9c71-5e95eb8f8b90",
+        "timestamp": 1784653147587
+      },
+      {
+        "executionId": "abca109e-5415-419e-8ee5-8542fb7e177d",
+        "chatSessionId": "sess_934b1284-f451-4ce4-9c71-5e95eb8f8b90",
+        "timestamp": 1784726856049
+      }
+    ],
+    "6.2 Write unit tests for AnimalPictureService": [
+      {
+        "executionId": "abca109e-5415-419e-8ee5-8542fb7e177d",
+        "chatSessionId": "sess_934b1284-f451-4ce4-9c71-5e95eb8f8b90",
+        "timestamp": 1784653125516
+      },
+      {
+        "executionId": "abca109e-5415-419e-8ee5-8542fb7e177d",
+        "chatSessionId": "sess_934b1284-f451-4ce4-9c71-5e95eb8f8b90",
+        "timestamp": 1784653146792
+      },
+      {
+        "executionId": "abca109e-5415-419e-8ee5-8542fb7e177d",
+        "chatSessionId": "sess_934b1284-f451-4ce4-9c71-5e95eb8f8b90",
+        "timestamp": 1784726855390
+      }
+    ],
+    "6. Implement AnimalPictureService": [
+      {
+        "executionId": "abca109e-5415-419e-8ee5-8542fb7e177d",
+        "chatSessionId": "sess_934b1284-f451-4ce4-9c71-5e95eb8f8b90",
+        "timestamp": 1784726855415
+      }
+    ],
+    "5. Implement SpreadsheetService": [
+      {
+        "executionId": "abca109e-5415-419e-8ee5-8542fb7e177d",
+        "chatSessionId": "sess_934b1284-f451-4ce4-9c71-5e95eb8f8b90",
+        "timestamp": 1784726856080
+      }
+    ],
+    "11. Integration wiring and final assembly": [
+      {
+        "executionId": "779d7658-5875-4ac5-bf10-8e9faacdb29d",
+        "chatSessionId": "sess_3d22d6da-3970-4dc4-a554-84223111e2bf",
+        "timestamp": 1786048503494
+      }
+    ]
+  }
+}
