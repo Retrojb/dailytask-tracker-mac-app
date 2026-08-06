@@ -331,7 +331,6 @@
 				LastUpgradeCheck = 1500;
 				TargetAttributes = {
 					3DF712A499A186E4B49A13AA = {
-						DevelopmentTeam = "";
 						ProvisioningStyle = Automatic;
 					};
 					6A593B1DCA62461776EB647B = {
@@ -339,7 +338,6 @@
 						ProvisioningStyle = Automatic;
 					};
 					920C5391082F262A5317BC1C = {
-						DevelopmentTeam = "";
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -474,8 +472,14 @@
 				CODE_SIGN_ENTITLEMENTS = DailyTrackerWidget/DailyTrackerWidget.entitlements;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = HN4UF8N9J4;
 				INFOPLIST_FILE = DailyTrackerWidget/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				INFOPLIST_KEY_CFBundleDisplayName = "Daily Tracker";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.retro.dailytracker.widget;
 				PRODUCT_NAME = DailyTrackerWidget;
@@ -509,6 +513,7 @@
 				CODE_SIGN_ENTITLEMENTS = RetroDailyTracker/RetroDailyTracker.entitlements;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = HN4UF8N9J4;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_GENERATION_MODE = GeneratedFile;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -595,8 +600,14 @@
 				CODE_SIGN_ENTITLEMENTS = DailyTrackerWidget/DailyTrackerWidget.entitlements;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = HN4UF8N9J4;
 				INFOPLIST_FILE = DailyTrackerWidget/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				INFOPLIST_KEY_CFBundleDisplayName = "Daily Tracker";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.retro.dailytracker.widget;
 				PRODUCT_NAME = DailyTrackerWidget;
@@ -612,6 +623,7 @@
 				CODE_SIGN_ENTITLEMENTS = RetroDailyTracker/RetroDailyTracker.entitlements;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = HN4UF8N9J4;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_GENERATION_MODE = GeneratedFile;
 				LD_RUNPATH_SEARCH_PATHS = (
