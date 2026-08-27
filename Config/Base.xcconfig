@@ -1,0 +1,81 @@
+// =============================================================================
+// Base.xcconfig — settings shared by every build configuration.
+//
+// IMPORTANT: nothing in this file is secret. Build settings referenced from
+// Info.plist end up in the shipped app bundle, where anyone can read them with
+// `plutil -p YourApp.app/Contents/Info.plist`. Treat every value here as public.
+//
+// OAuth client IDs are public identifiers by design. The flow is protected by
+// PKCE (see PKCE.swift), not by keeping the client ID hidden. Client *secrets*
+// must never appear here, or anywhere else in the app.
+//
+// Per-developer overrides live in Config/Local.xcconfig, which is gitignored.
+// Copy Config/Local.xcconfig.example to Config/Local.xcconfig to get started.
+// That file is included at the BOTTOM of this one so its values win over the
+// placeholder defaults below.
+// =============================================================================
+
+
+// ── Google OAuth ─────────────────────────────────────────────────────────────
+// Register the client in Google Cloud Console as application type "iOS" — it
+// covers macOS apps too. Do NOT use type "Desktop app": those are issued a
+// client secret that Google's token endpoint then requires, which would force a
+// secret into the app bundle. iOS-type clients have no secret and use PKCE.
+GOOGLE_OAUTH_CLIENT_ID = UNSET.apps.googleusercontent.com
+
+// Google iOS clients only accept a redirect URI whose scheme is the client ID
+// in reverse-DNS form, e.g.
+//   com.googleusercontent.apps.123456789012-abcdefghijklmnop
+// An arbitrary scheme such as com.retro.dailytracker will be rejected with
+// redirect_uri_mismatch.
+GOOGLE_OAUTH_REDIRECT_SCHEME = com.googleusercontent.apps.UNSET
+
+// EXACTLY ONE SLASH after the scheme. This is not a typo, and it differs from the
+// Microsoft URI below.
+//
+// Google's native clients require the custom-scheme redirect to have no
+// authority component:
+//     com.googleusercontent.apps.IDENTIFIER:/oauth2redirect     <- correct
+//     com.googleusercontent.apps.IDENTIFIER://oauth2redirect    <- rejected
+//
+// With `//`, `oauth2redirect` parses as the URI authority (host) and the path is
+// empty. With `/` it is the path and there is no authority. Google rejects the
+// authority form with:
+//     Error 400: invalid_request ... flowName=GeneralOAuthFlow
+//
+// See https://github.com/openid/AppAuth-iOS/blob/master/Examples/README-Google.md
+// which notes there is only a single slash after the scheme.
+//
+// A single `/` is not a comment in xcconfig, so no `$()` escaping is needed here.
+GOOGLE_OAUTH_REDIRECT_URI = $(GOOGLE_OAUTH_REDIRECT_SCHEME):/oauth2redirect
+
+
+// ── Microsoft OAuth (Entra ID / Graph) ───────────────────────────────────────
+// Register under "Mobile and desktop applications" as a public client. Public
+// clients cannot have a client secret, and Entra ID rejects one if sent.
+//
+// The placeholder deliberately contains the literal `UNSET` rather than a
+// plausible-looking dummy GUID. AppConfig rejects any value containing `UNSET`,
+// so a value that was never filled in fails fast with a clear message instead of
+// reaching Entra ID and coming back as an opaque invalid_client error.
+MICROSOFT_OAUTH_CLIENT_ID = UNSET-MICROSOFT-CLIENT-ID
+
+// Microsoft accepts a custom reverse-DNS scheme for native redirects, so this
+// one can stay aligned with the bundle identifier.
+MICROSOFT_OAUTH_REDIRECT_SCHEME = com.retro.dailytracker
+
+// Note the contrast with Google above: Entra ID accepts the conventional `://`
+// authority form for custom schemes, matching the `msauth.<bundle-id>://auth`
+// pattern MSAL uses. This value must match the redirect registered in the portal
+// character for character.
+//
+// The `$()` here IS required: `//` starts a comment in xcconfig files, so writing
+// `scheme://path` directly would silently truncate the value to `scheme:`. `$()`
+// expands to nothing and breaks up the `//` token so both slashes survive.
+MICROSOFT_OAUTH_REDIRECT_URI = $(MICROSOFT_OAUTH_REDIRECT_SCHEME):/$()/oauth/callback
+
+
+// ── Local, gitignored overrides ──────────────────────────────────────────────
+// `#include?` (with the question mark) is the optional form: the build succeeds
+// when the file is absent, which keeps a fresh clone buildable.
+#include? "Local.xcconfig"

@@ -1,0 +1,42 @@
+// =============================================================================
+// Local.xcconfig.example — template for per-developer build settings.
+//
+// SETUP
+//   cp Config/Local.xcconfig.example Config/Local.xcconfig
+//   then fill in the values from your own OAuth client registrations.
+//
+// Config/Local.xcconfig is gitignored. This .example file IS committed, so keep
+// it filled with placeholders only.
+//
+// Note that these are not secrets being protected — OAuth client IDs ship inside
+// the app bundle regardless. This file exists so each developer can point the
+// app at their own client registrations without editing tracked files.
+// =============================================================================
+
+
+// ── Google ───────────────────────────────────────────────────────────────────
+// From Google Cloud Console → Credentials → OAuth 2.0 Client IDs.
+// Application type must be "iOS" (not "Desktop app"), so that no client secret
+// is involved. See Config/Base.xcconfig for why.
+GOOGLE_OAUTH_CLIENT_ID = 123456789012-abcdefghijklmnopqrstuvwxyz.apps.googleusercontent.com
+
+// The client ID above in reverse-DNS form, WITHOUT the
+// `.apps.googleusercontent.com` suffix. For the example ID above this is:
+GOOGLE_OAUTH_REDIRECT_SCHEME = com.googleusercontent.apps.123456789012-abcdefghijklmnopqrstuvwxyz
+
+
+// ── Microsoft ────────────────────────────────────────────────────────────────
+// From the Microsoft Entra admin center → App registrations → your app →
+// Application (client) ID. Register the redirect under "Mobile and desktop
+// applications" as a public client (no secret).
+//
+// Leave the `UNSET` sentinel in place if you are only using Google Sheets. The
+// app only reads this when Microsoft Excel is the selected provider, and it will
+// fail with a clear message rather than sending a bogus client ID to Entra ID.
+MICROSOFT_OAUTH_CLIENT_ID = UNSET-MICROSOFT-CLIENT-ID
+
+
+// ── Code signing ─────────────────────────────────────────────────────────────
+// Uncomment and set to your own Apple Developer Team ID if you need to sign
+// locally with a different team than the one in project.yml.
+// DEVELOPMENT_TEAM = ABCDE12345

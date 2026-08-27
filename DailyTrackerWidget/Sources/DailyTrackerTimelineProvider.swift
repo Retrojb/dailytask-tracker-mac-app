@@ -14,21 +14,17 @@ struct DailyTrackerTimelineProvider: TimelineProvider {
 
     // MARK: - Shared SwiftData Container
 
+    /// Container over the same store the app writes to.
+    ///
+    /// This previously pointed at `default.store` with a `WorkEntry`-only schema.
+    /// The app writes `RetroDailyTracker.store`, so the widget was reading a
+    /// different file and always rendered an empty entry. Both the filename and
+    /// the schema now come from ``PersistenceConfiguration``.
+    ///
+    /// Returns `nil` rather than trapping so a failure here degrades to the empty
+    /// timeline entry instead of crashing the widget extension.
     private var sharedModelContainer: ModelContainer? {
-        guard let containerURL = FileManager.default.containerURL(
-            forSecurityApplicationGroupIdentifier: "group.com.retro.dailytracker"
-        ) else {
-            return nil
-        }
-
-        let storeURL = containerURL.appendingPathComponent("default.store")
-        let configuration = ModelConfiguration(url: storeURL)
-
-        do {
-            return try ModelContainer(for: WorkEntry.self, configurations: configuration)
-        } catch {
-            return nil
-        }
+        try? PersistenceConfiguration.makeContainer()
     }
 
     // MARK: - TimelineProvider

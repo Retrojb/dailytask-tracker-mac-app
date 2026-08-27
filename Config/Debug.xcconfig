@@ -1,0 +1,11 @@
+// =============================================================================
+// Debug.xcconfig — Debug-configuration build settings.
+//
+// Shared values live in Base.xcconfig. Add Debug-only overrides below the
+// include; assignments later in the file win.
+//
+// Do not set the OAuth values here — they are resolved through Base.xcconfig so
+// that Config/Local.xcconfig can override them for both configurations at once.
+// =============================================================================
+
+#include "Base.xcconfig"

@@ -22,40 +22,20 @@ struct RetroDailyTrackerApp: App {
     private let persistenceStore: PersistenceStore
 
     init() {
-        let schema = Schema([WorkEntry.self, SpreadsheetConfig.self])
-        let appGroupURL = FileManager.default.containerURL(
-            forSecurityApplicationGroupIdentifier: "group.com.retro.dailytracker"
-        )
-
-        let configuration: ModelConfiguration
-        if let appGroupURL {
-            let storeURL = appGroupURL.appendingPathComponent("RetroDailyTracker.store")
-            configuration = ModelConfiguration(
-                "RetroDailyTracker",
-                schema: schema,
-                url: storeURL
-            )
-        } else {
-            // Fallback to default location if App Group container is inaccessible
-            configuration = ModelConfiguration(
-                "RetroDailyTracker",
-                schema: schema
-            )
-        }
-
-        do {
-            modelContainer = try ModelContainer(for: schema, configurations: [configuration])
-        } catch {
-            fatalError("Failed to create ModelContainer: \(error.localizedDescription)")
-        }
-
+        // Schema and store URL are defined once in PersistenceConfiguration so the
+        // app, the widget, and PersistenceStore cannot drift apart.
+        self.modelContainer = PersistenceConfiguration.shared
         self.spreadsheetService = SpreadsheetService()
-        self.persistenceStore = PersistenceStore()
+        self.persistenceStore = PersistenceStore(container: modelContainer)
     }
 
     var body: some Scene {
         WindowGroup {
-            ContentView(selectedTab: $selectedTab, spreadsheetService: spreadsheetService)
+            ContentView(
+                selectedTab: $selectedTab,
+                spreadsheetService: spreadsheetService,
+                persistenceStore: persistenceStore
+            )
                 .onReceive(NotificationCenter.default.publisher(for: NotificationDelegate.openEntryFormNotification)) { _ in
                     selectedTab = .entryForm
                     // Bring the app window to the front
@@ -101,8 +81,10 @@ struct RetroDailyTrackerApp: App {
             if !pendingEntries.isEmpty {
                 logger.info("Retrying sync for \(pendingEntries.count) pending entries")
                 for entry in pendingEntries {
-                    let isUpdate = entry.updatedAt > entry.createdAt
-                    _ = await spreadsheetService.syncEntryWithRetry(entry, isUpdate: isUpdate)
+                    _ = await spreadsheetService.syncEntryWithRetry(
+                        entry,
+                        isUpdate: SpreadsheetService.isUpdate(entry)
+                    )
                 }
             }
 
@@ -173,6 +155,8 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 
     /// Purges work entries older than 90 days on each app launch.
     private func purgeExpiredData() {
+        // Uses the shared container, so this runs against the same store and
+        // schema as the rest of the app.
         let store = PersistenceStore()
         do {
             try store.purgeExpiredEntries(retentionDays: 90)

@@ -6,35 +6,21 @@ final class PersistenceStore: PersistenceStoreProtocol {
     private let modelContainer: ModelContainer
     private let modelContext: ModelContext
 
-    init() {
-        let schema = Schema([WorkEntry.self])
-        let appGroupURL = FileManager.default.containerURL(
-            forSecurityApplicationGroupIdentifier: "group.com.retro.dailytracker"
-        )
-
-        let configuration: ModelConfiguration
-        if let appGroupURL {
-            let storeURL = appGroupURL.appendingPathComponent("RetroDailyTracker.store")
-            configuration = ModelConfiguration(
-                "RetroDailyTracker",
-                schema: schema,
-                url: storeURL
-            )
-        } else {
-            // Fallback to default location if App Group container is inaccessible
-            configuration = ModelConfiguration(
-                "RetroDailyTracker",
-                schema: schema
-            )
-        }
-
-        do {
-            modelContainer = try ModelContainer(for: schema, configurations: [configuration])
-        } catch {
-            fatalError("Failed to create ModelContainer: \(error.localizedDescription)")
-        }
-
-        modelContext = ModelContext(modelContainer)
+    /// Creates a store over a shared container.
+    ///
+    /// This type previously built its own `ModelContainer` from a `WorkEntry`-only
+    /// schema pointed at the same file as the app's full-schema container. That
+    /// caused SwiftData to migrate the store down to the narrower model and drop
+    /// the `SpreadsheetConfig` table, so saving spreadsheet settings failed with
+    /// `no such table: ZSPREADSHEETCONFIG`.
+    ///
+    /// The schema and store URL now come from ``PersistenceConfiguration``, and the
+    /// container is shared process-wide so all contexts observe each other's writes.
+    ///
+    /// - Parameter container: injectable for tests; defaults to the shared container.
+    init(container: ModelContainer = PersistenceConfiguration.shared) {
+        self.modelContainer = container
+        self.modelContext = ModelContext(container)
     }
 
     // MARK: - PersistenceStoreProtocol

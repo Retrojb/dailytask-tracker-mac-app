@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0429B16BE8647854344F5474 /* PKCE.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC86C3606C2250D908E158D5 /* PKCE.swift */; };
 		0569919D8BA3E8CDD699F6A7 /* NotificationPermissionMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C669909087B4E1F76BD9768A /* NotificationPermissionMonitor.swift */; };
 		06AAAFABCD4185DEC48F446F /* AnimalImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41175EDF28809518848FE717 /* AnimalImageCache.swift */; };
 		083E49EF0F362B198797AFD6 /* WorkEntryValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFCBED4AA8F05AA1D94A624 /* WorkEntryValidator.swift */; };
@@ -20,6 +21,7 @@
 		2F316F317B583326B9404B77 /* WorkEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6A5CC5B538FDD24EFEF18FF /* WorkEntry.swift */; };
 		349E00189CA03B462AF96950 /* ReminderServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B6EE53C0425F2CE417BBFB /* ReminderServiceProtocol.swift */; };
 		39CCBC0B1AB6D2E488BCE0A9 /* AnimalImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41175EDF28809518848FE717 /* AnimalImageCache.swift */; };
+		3A244D50BC357B24EC1FAE57 /* PersistenceConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE694E3EE90173F2F08F2CF /* PersistenceConfiguration.swift */; };
 		3A5D4367DAB3C805F1BEAF4C /* ReminderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907C2D29E8E4C9EFD12E2FB0 /* ReminderService.swift */; };
 		487D852DC17ACC0803034175 /* SpreadsheetServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF0D6D2E63DBC7998173B2F /* SpreadsheetServiceProtocol.swift */; };
 		49EA0ACFE291EB3FA6F174B1 /* WorkEntryValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFCBED4AA8F05AA1D94A624 /* WorkEntryValidator.swift */; };
@@ -27,6 +29,7 @@
 		5F8247F4F0DC6AC4EA35C7F1 /* SpreadsheetConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56366DAE04F4455BFBDF669A /* SpreadsheetConfig.swift */; };
 		628B54B12748D4437DA12A1B /* AnimalImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41175EDF28809518848FE717 /* AnimalImageCache.swift */; };
 		6A3F1AF4C40052939EB85B39 /* SpreadsheetService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC99261699B4147AB75D30F /* SpreadsheetService.swift */; };
+		730DBA3B921C4243F3AC84CB /* PersistenceConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE694E3EE90173F2F08F2CF /* PersistenceConfiguration.swift */; };
 		75BD69B44C96D259ED128C65 /* ReminderServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B6EE53C0425F2CE417BBFB /* ReminderServiceProtocol.swift */; };
 		7789593EE97972FE996F30C7 /* SpreadsheetServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF0D6D2E63DBC7998173B2F /* SpreadsheetServiceProtocol.swift */; };
 		77C1C5408E03703E8B7A4774 /* SpreadsheetConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56366DAE04F4455BFBDF669A /* SpreadsheetConfig.swift */; };
@@ -41,9 +44,12 @@
 		AE28EEBDE8336BEBE77089BB /* ReminderServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B6EE53C0425F2CE417BBFB /* ReminderServiceProtocol.swift */; };
 		B178B5BA6E31D62F6DB6459F /* DailyTrackerWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE90FE64D8299E8637647ED8 /* DailyTrackerWidgetView.swift */; };
 		B4F52D006D4528AEEB4D884D /* AnimalPictureService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441BCAE61EFAA203B5CFF36E /* AnimalPictureService.swift */; };
+		B6EC0EEF33B9222DFF9EBF8F /* PersistenceConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE694E3EE90173F2F08F2CF /* PersistenceConfiguration.swift */; };
 		C0E6A3B13E0721465CDE9799 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AF0A6AB15F2227D60765A1 /* SettingsView.swift */; };
 		C204AA8CD4F9D55F794A4EE7 /* RetroDailyTrackerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DCF3E130059DD294636321 /* RetroDailyTrackerApp.swift */; };
 		C37CD89CB5BEBA818CF54816 /* WorkEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6A5CC5B538FDD24EFEF18FF /* WorkEntry.swift */; };
+		C6989C0B51A51637332937D1 /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA36237417B678CB33E2D52 /* AppConfig.swift */; };
+		C7A7F57C7CAE0D05F97A00DA /* AppIcon.icon in Resources */ = {isa = PBXBuildFile; fileRef = 4812A13A9692C8ED8F21CE18 /* AppIcon.icon */; };
 		C861BE994022A9D4C9ECD411 /* PersistenceStoreProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CE5F345043E45AAA363510E /* PersistenceStoreProtocol.swift */; };
 		CC0B6A4C824D22417AB20F65 /* AnimalPictureServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED49AC6BD60496DD131B76D /* AnimalPictureServiceProtocol.swift */; };
 		D14EFFB22C688B3E8DE435B3 /* SpreadsheetServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF0D6D2E63DBC7998173B2F /* SpreadsheetServiceProtocol.swift */; };
@@ -99,8 +105,10 @@
 		3E8EAD4CB3550B02200348F0 /* FetchAnimalIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchAnimalIntent.swift; sourceTree = "<group>"; };
 		41175EDF28809518848FE717 /* AnimalImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalImageCache.swift; sourceTree = "<group>"; };
 		441BCAE61EFAA203B5CFF36E /* AnimalPictureService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalPictureService.swift; sourceTree = "<group>"; };
+		4812A13A9692C8ED8F21CE18 /* AppIcon.icon */ = {isa = PBXFileReference; lastKnownFileType = wrapper.icon; path = AppIcon.icon; sourceTree = "<group>"; };
 		4EFCBED4AA8F05AA1D94A624 /* WorkEntryValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkEntryValidator.swift; sourceTree = "<group>"; };
 		50DCF3E130059DD294636321 /* RetroDailyTrackerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetroDailyTrackerApp.swift; sourceTree = "<group>"; };
+		53EED19AE69085DD9E7AA4A0 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
 		56366DAE04F4455BFBDF669A /* SpreadsheetConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpreadsheetConfig.swift; sourceTree = "<group>"; };
 		5DF0D6D2E63DBC7998173B2F /* SpreadsheetServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpreadsheetServiceProtocol.swift; sourceTree = "<group>"; };
 		669F83CE292485765DFE98DA /* RetroDailyTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RetroDailyTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -111,22 +119,36 @@
 		907C2D29E8E4C9EFD12E2FB0 /* ReminderService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderService.swift; sourceTree = "<group>"; };
 		9724F4E17017956616EB8903 /* RetroDailyTrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RetroDailyTrackerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3ED6E27EA8C212DE6557190 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
+		AEE694E3EE90173F2F08F2CF /* PersistenceConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceConfiguration.swift; sourceTree = "<group>"; };
 		B6A5CC5B538FDD24EFEF18FF /* WorkEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkEntry.swift; sourceTree = "<group>"; };
+		BEA36237417B678CB33E2D52 /* AppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
+		C0E671EC2268463C2535F6FD /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
 		C39C32609310F32101EC7EB1 /* EntryFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryFormView.swift; sourceTree = "<group>"; };
 		C669909087B4E1F76BD9768A /* NotificationPermissionMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationPermissionMonitor.swift; sourceTree = "<group>"; };
 		CED49AC6BD60496DD131B76D /* AnimalPictureServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalPictureServiceProtocol.swift; sourceTree = "<group>"; };
 		D9A589452E48311810549C28 /* PersistenceStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceStore.swift; sourceTree = "<group>"; };
+		DC86C3606C2250D908E158D5 /* PKCE.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PKCE.swift; sourceTree = "<group>"; };
 		EE90FE64D8299E8637647ED8 /* DailyTrackerWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTrackerWidgetView.swift; sourceTree = "<group>"; };
 		F012FDFFCDFA9A78B0240A44 /* NotificationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationDelegate.swift; sourceTree = "<group>"; };
 		F3B6EE53C0425F2CE417BBFB /* ReminderServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderServiceProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
+		0C8C87094E06182BCC7ED195 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				C0E671EC2268463C2535F6FD /* Debug.xcconfig */,
+				53EED19AE69085DD9E7AA4A0 /* Release.xcconfig */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
 		1A2A68E053ABFBB54C37A4B8 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
 				41175EDF28809518848FE717 /* AnimalImageCache.swift */,
 				441BCAE61EFAA203B5CFF36E /* AnimalPictureService.swift */,
+				AEE694E3EE90173F2F08F2CF /* PersistenceConfiguration.swift */,
 				56366DAE04F4455BFBDF669A /* SpreadsheetConfig.swift */,
 				17657EFEDEB4D5E05253F311 /* SpreadsheetRowSerializer.swift */,
 				B6A5CC5B538FDD24EFEF18FF /* WorkEntry.swift */,
@@ -144,6 +166,14 @@
 				03AF0A6AB15F2227D60765A1 /* SettingsView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		1AC0DBC406B2E3D858577C44 /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				BEA36237417B678CB33E2D52 /* AppConfig.swift */,
+			);
+			path = Configuration;
 			sourceTree = "<group>";
 		};
 		26929DD330AC3F1A7E61557B /* Delegates */ = {
@@ -173,6 +203,22 @@
 				3E8EAD4CB3550B02200348F0 /* FetchAnimalIntent.swift */,
 			);
 			path = Intents;
+			sourceTree = "<group>";
+		};
+		3D295C27A150E460C01A86BF /* RetroDailyTracker */ = {
+			isa = PBXGroup;
+			children = (
+				4812A13A9692C8ED8F21CE18 /* AppIcon.icon */,
+			);
+			path = RetroDailyTracker;
+			sourceTree = "<group>";
+		};
+		42718C35342087FA0CD1DCAD /* OAuth */ = {
+			isa = PBXGroup;
+			children = (
+				DC86C3606C2250D908E158D5 /* PKCE.swift */,
+			);
+			path = OAuth;
 			sourceTree = "<group>";
 		};
 		4BA7E4ED1923D58067CCC3ED /* UnitTests */ = {
@@ -224,6 +270,8 @@
 		AC8F835B15625E9795005C42 = {
 			isa = PBXGroup;
 			children = (
+				0C8C87094E06182BCC7ED195 /* Config */,
+				3D295C27A150E460C01A86BF /* RetroDailyTracker */,
 				7FB16695C79C0BBEB6CA4C0E /* RetroDailyTrackerTests */,
 				1A2A68E053ABFBB54C37A4B8 /* Shared */,
 				2BFCE9077207623D8E9E390C /* Sources */,
@@ -239,6 +287,7 @@
 				D9A589452E48311810549C28 /* PersistenceStore.swift */,
 				907C2D29E8E4C9EFD12E2FB0 /* ReminderService.swift */,
 				2BC99261699B4147AB75D30F /* SpreadsheetService.swift */,
+				42718C35342087FA0CD1DCAD /* OAuth */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -248,6 +297,7 @@
 			children = (
 				12137117C94CE284481F404E /* ContentView.swift */,
 				50DCF3E130059DD294636321 /* RetroDailyTrackerApp.swift */,
+				1AC0DBC406B2E3D858577C44 /* Configuration */,
 				26929DD330AC3F1A7E61557B /* Delegates */,
 				B37958A87CF67DB7BD4CA790 /* Services */,
 				1ABFBDE130E953C249A531EB /* Views */,
@@ -307,6 +357,7 @@
 			buildConfigurationList = 106E2F58AB3DAF75FC166286 /* Build configuration list for PBXNativeTarget "RetroDailyTracker" */;
 			buildPhases = (
 				0706BEEF1671B0070383EC75 /* Sources */,
+				4E5D4DC5D753252E8E808D46 /* Resources */,
 				EB786584A81201C369FD90F1 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
@@ -331,6 +382,7 @@
 				LastUpgradeCheck = 1500;
 				TargetAttributes = {
 					3DF712A499A186E4B49A13AA = {
+						DevelopmentTeam = HN4UF8N9J4;
 						ProvisioningStyle = Automatic;
 					};
 					6A593B1DCA62461776EB647B = {
@@ -338,6 +390,7 @@
 						ProvisioningStyle = Automatic;
 					};
 					920C5391082F262A5317BC1C = {
+						DevelopmentTeam = HN4UF8N9J4;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -363,6 +416,17 @@
 		};
 /* End PBXProject section */
 
+/* Begin PBXResourcesBuildPhase section */
+		4E5D4DC5D753252E8E808D46 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C7A7F57C7CAE0D05F97A00DA /* AppIcon.icon in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		0706BEEF1671B0070383EC75 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -371,11 +435,14 @@
 				39CCBC0B1AB6D2E488BCE0A9 /* AnimalImageCache.swift in Sources */,
 				B4F52D006D4528AEEB4D884D /* AnimalPictureService.swift in Sources */,
 				CC0B6A4C824D22417AB20F65 /* AnimalPictureServiceProtocol.swift in Sources */,
+				C6989C0B51A51637332937D1 /* AppConfig.swift in Sources */,
 				FA83AC04CA008D266DBA8403 /* ContentView.swift in Sources */,
 				D7B13EE6B9BF4E5C30E7D4A1 /* EntryFormView.swift in Sources */,
 				5E3A705BF96ECED708E17373 /* HistoryView.swift in Sources */,
 				8EB1B66A9E36A45668E0AD74 /* NotificationDelegate.swift in Sources */,
 				0569919D8BA3E8CDD699F6A7 /* NotificationPermissionMonitor.swift in Sources */,
+				0429B16BE8647854344F5474 /* PKCE.swift in Sources */,
+				B6EC0EEF33B9222DFF9EBF8F /* PersistenceConfiguration.swift in Sources */,
 				DB73495014DA65D8D786D6A6 /* PersistenceStore.swift in Sources */,
 				C861BE994022A9D4C9ECD411 /* PersistenceStoreProtocol.swift in Sources */,
 				3A5D4367DAB3C805F1BEAF4C /* ReminderService.swift in Sources */,
@@ -403,6 +470,7 @@
 				900A88C07E7E5548CADFEB28 /* DailyTrackerWidget.swift in Sources */,
 				B178B5BA6E31D62F6DB6459F /* DailyTrackerWidgetView.swift in Sources */,
 				F5C15EE86F0385AC0F91189B /* FetchAnimalIntent.swift in Sources */,
+				3A244D50BC357B24EC1FAE57 /* PersistenceConfiguration.swift in Sources */,
 				DD5A5FA884EBA480687FC759 /* PersistenceStoreProtocol.swift in Sources */,
 				349E00189CA03B462AF96950 /* ReminderServiceProtocol.swift in Sources */,
 				8213F9595C17070035F35593 /* SpreadsheetConfig.swift in Sources */,
@@ -421,6 +489,7 @@
 				F2CDB39CB6036D25E2F5A4DC /* AnimalPictureService.swift in Sources */,
 				94A05748B1606C6A49ECABC5 /* AnimalPictureServiceProtocol.swift in Sources */,
 				DB6EEA4B019751BB5574E8EC /* AnimalPictureServiceTests.swift in Sources */,
+				730DBA3B921C4243F3AC84CB /* PersistenceConfiguration.swift in Sources */,
 				2B455B35471A3B3BFA91340B /* PersistenceStoreProtocol.swift in Sources */,
 				75BD69B44C96D259ED128C65 /* ReminderServiceProtocol.swift in Sources */,
 				2128AD70D394F555261648EE /* SerializationPropertyTests.swift in Sources */,
@@ -475,11 +544,7 @@
 				DEVELOPMENT_TEAM = HN4UF8N9J4;
 				INFOPLIST_FILE = DailyTrackerWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Daily Tracker";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@executable_path/../../../../Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.retro.dailytracker.widget;
 				PRODUCT_NAME = DailyTrackerWidget;
@@ -515,7 +580,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = HN4UF8N9J4;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_GENERATION_MODE = GeneratedFile;
+				INFOPLIST_FILE = RetroDailyTracker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -530,6 +595,7 @@
 		};
 		BF9907BAF89A2A0CB65EAC85 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C0E671EC2268463C2535F6FD /* Debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -603,11 +669,7 @@
 				DEVELOPMENT_TEAM = HN4UF8N9J4;
 				INFOPLIST_FILE = DailyTrackerWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Daily Tracker";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@executable_path/../../../../Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.retro.dailytracker.widget;
 				PRODUCT_NAME = DailyTrackerWidget;
@@ -625,7 +687,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = HN4UF8N9J4;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_GENERATION_MODE = GeneratedFile;
+				INFOPLIST_FILE = RetroDailyTracker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -640,6 +702,7 @@
 		};
 		DFD85CEB9D137FE56775F784 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 53EED19AE69085DD9E7AA4A0 /* Release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;

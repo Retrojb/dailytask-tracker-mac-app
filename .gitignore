@@ -1,3 +1,17 @@
 DS_Store
 .idea/
 build/*
+
+# Per-developer build settings (OAuth client IDs, local signing team).
+# Base/Debug/Release.xcconfig ARE tracked: the Xcode project references them by
+# path, so ignoring them would break a fresh clone. Only the local override is
+# untracked. Copy Config/Local.xcconfig.example to create it.
+Config/Local.xcconfig
+
+# OAuth client files downloaded from the Google Cloud Console. The app does not
+# read these (client IDs come from Config/Local.xcconfig), so they do not belong
+# in the repo. Note that the Desktop-app variant of these downloads DOES contain
+# a client secret, which must never be committed.
+client_*.apps.googleusercontent.com.plist
+client_secret_*.apps.googleusercontent.com.json
+GoogleService-Info.plist

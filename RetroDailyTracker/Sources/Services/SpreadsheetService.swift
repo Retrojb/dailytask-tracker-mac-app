@@ -8,27 +8,60 @@ final class SpreadsheetService: NSObject, SpreadsheetServiceProtocol, ASWebAuthe
 
     // MARK: - Constants
 
-    private enum OAuthConfig {
-        enum Google {
-            static let authorizationURL = "https://accounts.google.com/o/oauth2/v2/auth"
-            static let tokenURL = "https://oauth2.googleapis.com/token"
-            static let scope = "https://www.googleapis.com/auth/spreadsheets"
-            // Replace with your registered Google OAuth client ID
-            static let clientID = "YOUR_GOOGLE_CLIENT_ID"
-            static let clientSecret = "YOUR_GOOGLE_CLIENT_SECRET"
-        }
+    /// OAuth endpoint definitions per provider.
+    ///
+    /// Endpoints are fixed protocol facts and stay in source. Client IDs and
+    /// redirect URIs vary per registration and come from `AppConfig`, which reads
+    /// them from build settings (see `Config/Base.xcconfig`).
+    ///
+    /// There is deliberately no `clientSecret` here. This app is a public client
+    /// under RFC 8252 — anything shipped in the bundle is extractable — so the
+    /// authorization code is protected with PKCE instead. See `PKCE.swift`.
+    private struct OAuthEndpoints {
+        let authorizationURL: String
+        let tokenURL: String
+        let scope: String
+        let config: AppConfig.OAuthProviderConfig
 
-        enum Microsoft {
-            static let authorizationURL = "https://login.microsoftonline.com/common/oauth2/v2.0/authorize"
-            static let tokenURL = "https://login.microsoftonline.com/common/oauth2/v2.0/token"
-            static let scope = "Files.ReadWrite"
-            // Replace with your registered Microsoft OAuth client ID
-            static let clientID = "YOUR_MICROSOFT_CLIENT_ID"
-            static let clientSecret = "YOUR_MICROSOFT_CLIENT_SECRET"
-        }
+        /// Provider-specific extras appended to the authorization request.
+        let additionalAuthorizationParameters: [String: String]
 
-        static let callbackURLScheme = "com.retro.dailytracker"
-        static let redirectURI = "com.retro.dailytracker://oauth/callback"
+        /// Whether the provider expects `scope` to be repeated on refresh requests.
+        let sendsScopeOnRefresh: Bool
+
+        static func forProvider(_ provider: SpreadsheetProvider) -> OAuthEndpoints {
+            switch provider {
+            case .googleSheets:
+                return OAuthEndpoints(
+                    authorizationURL: "https://accounts.google.com/o/oauth2/v2/auth",
+                    tokenURL: "https://oauth2.googleapis.com/token",
+                    scope: "https://www.googleapis.com/auth/spreadsheets",
+                    config: AppConfig.google,
+                    // access_type=offline is what makes Google return a refresh
+                    // token; prompt=consent forces re-issuing one if the user
+                    // previously authorized without it.
+                    additionalAuthorizationParameters: [
+                        "access_type": "offline",
+                        "prompt": "consent",
+                    ],
+                    sendsScopeOnRefresh: false
+                )
+
+            case .microsoftExcel:
+                return OAuthEndpoints(
+                    authorizationURL: "https://login.microsoftonline.com/common/oauth2/v2.0/authorize",
+                    tokenURL: "https://login.microsoftonline.com/common/oauth2/v2.0/token",
+                    // offline_access is required for Entra ID to issue a refresh
+                    // token; without it refreshAccessToken can never succeed.
+                    scope: "Files.ReadWrite offline_access",
+                    config: AppConfig.microsoft,
+                    additionalAuthorizationParameters: [
+                        "response_mode": "query",
+                    ],
+                    sendsScopeOnRefresh: true
+                )
+            }
+        }
     }
 
     private enum KeychainKeys {
@@ -37,6 +70,20 @@ final class SpreadsheetService: NSObject, SpreadsheetServiceProtocol, ASWebAuthe
         static let googleRefreshToken = "google_refresh_token"
         static let microsoftAccessToken = "microsoft_access_token"
         static let microsoftRefreshToken = "microsoft_refresh_token"
+
+        static func accessToken(for provider: SpreadsheetProvider) -> String {
+            switch provider {
+            case .googleSheets: return googleAccessToken
+            case .microsoftExcel: return microsoftAccessToken
+            }
+        }
+
+        static func refreshToken(for provider: SpreadsheetProvider) -> String {
+            switch provider {
+            case .googleSheets: return googleRefreshToken
+            case .microsoftExcel: return microsoftRefreshToken
+            }
+        }
     }
 
     private enum RetryConfig {
@@ -78,8 +125,8 @@ final class SpreadsheetService: NSObject, SpreadsheetServiceProtocol, ASWebAuthe
             throw SpreadsheetServiceError.notConfigured
         }
 
-        let authorizationCode = try await performOAuthFlow(for: provider)
-        try await exchangeAuthorizationCode(authorizationCode, provider: provider)
+        let authorization = try await performOAuthFlow(for: provider)
+        try await exchangeAuthorizationCode(authorization, provider: provider)
         logger.info("Authentication successful for \(String(describing: provider))")
     }
 
@@ -151,6 +198,40 @@ final class SpreadsheetService: NSObject, SpreadsheetServiceProtocol, ASWebAuthe
         // In production, this would query PersistenceStore for entries with .retrying status.
         // The retry logic is integrated into the write/update failure handling.
         logger.info("retryPendingSync invoked — retry queue processing delegated to caller with entry list")
+    }
+
+    /// Whether an entry should be synced as an update to an existing spreadsheet
+    /// row rather than appended as a new one.
+    ///
+    /// Centralized so the automatic retry loop and the manual retry button cannot
+    /// disagree and produce a duplicate row.
+    static func isUpdate(_ entry: WorkEntry) -> Bool {
+        entry.updatedAt > entry.createdAt
+    }
+
+    /// Performs a single user-initiated sync attempt for one entry.
+    ///
+    /// Unlike ``syncEntryWithRetry(_:isUpdate:)`` this does not increment the retry
+    /// budget or post a failure notification — the caller surfaces the error in the
+    /// UI. A successful attempt clears any accumulated retry count so the automatic
+    /// loop starts fresh.
+    func retrySync(for entry: WorkEntry) async throws {
+        entry.syncStatus = .retrying
+
+        do {
+            if Self.isUpdate(entry) {
+                try await updateEntry(entry)
+            } else {
+                try await writeEntry(entry)
+            }
+            // writeEntry/updateEntry set .synced on success.
+            retryAttempts.removeValue(forKey: entry.id)
+            logger.info("Manual retry succeeded for entry \(entry.id)")
+        } catch {
+            entry.syncStatus = .failed
+            logger.error("Manual retry failed for entry \(entry.id): \(error.localizedDescription)")
+            throw error
+        }
     }
 
     /// Attempts to sync a single entry, handling retry logic.
@@ -532,14 +613,36 @@ final class SpreadsheetService: NSObject, SpreadsheetServiceProtocol, ASWebAuthe
 
     // MARK: - OAuth Flow
 
-    /// Performs the OAuth authorization flow using ASWebAuthenticationSession.
-    private func performOAuthFlow(for provider: SpreadsheetProvider) async throws -> String {
-        let authURL = buildAuthorizationURL(for: provider)
+    /// An authorization code plus the PKCE verifier needed to redeem it.
+    ///
+    /// The verifier must survive from the authorization request through to the
+    /// token exchange, which is why these travel together.
+    private struct PendingAuthorization {
+        let code: String
+        let codeVerifier: String
+    }
 
-        return try await withCheckedThrowingContinuation { continuation in
+    /// Performs the OAuth authorization flow using ASWebAuthenticationSession.
+    private func performOAuthFlow(for provider: SpreadsheetProvider) async throws -> PendingAuthorization {
+        let endpoints = OAuthEndpoints.forProvider(provider)
+
+        let pkce = try PKCEChallenge()
+
+        // `state` is unrelated to PKCE: it ties the callback back to this specific
+        // request, so a callback the app did not initiate is rejected (CSRF
+        // protection, RFC 6749 §10.12).
+        let expectedState = try PKCEChallenge.randomURLSafeString(byteCount: 16)
+
+        let authURL = try buildAuthorizationURL(
+            endpoints: endpoints,
+            codeChallenge: pkce.challenge,
+            state: expectedState
+        )
+
+        let code: String = try await withCheckedThrowingContinuation { continuation in
             let session = ASWebAuthenticationSession(
                 url: authURL,
-                callbackURLScheme: OAuthConfig.callbackURLScheme
+                callbackURLScheme: endpoints.config.redirectScheme
             ) { callbackURL, error in
                 if let error = error {
                     continuation.resume(throwing: SpreadsheetServiceError.authenticationFailed(error.localizedDescription))
@@ -547,8 +650,36 @@ final class SpreadsheetService: NSObject, SpreadsheetServiceProtocol, ASWebAuthe
                 }
 
                 guard let callbackURL = callbackURL,
-                      let components = URLComponents(url: callbackURL, resolvingAgainstBaseURL: false),
-                      let code = components.queryItems?.first(where: { $0.name == "code" })?.value else {
+                      let components = URLComponents(url: callbackURL, resolvingAgainstBaseURL: false) else {
+                    continuation.resume(throwing: SpreadsheetServiceError.authenticationFailed("No callback URL received"))
+                    return
+                }
+
+                let queryItems = components.queryItems ?? []
+                func value(_ name: String) -> String? {
+                    queryItems.first(where: { $0.name == name })?.value
+                }
+
+                // A denied or failed authorization comes back as a redirect
+                // carrying `error`, not as a session error.
+                if let errorCode = value("error") {
+                    let detail = value("error_description") ?? errorCode
+                    continuation.resume(throwing: SpreadsheetServiceError.authenticationFailed(detail))
+                    return
+                }
+
+                // Validate state before trusting anything else in the callback.
+                guard let returnedState = value("state") else {
+                    continuation.resume(throwing: SpreadsheetServiceError.stateMissing)
+                    return
+                }
+
+                guard returnedState == expectedState else {
+                    continuation.resume(throwing: SpreadsheetServiceError.stateMismatch)
+                    return
+                }
+
+                guard let code = value("code") else {
                     continuation.resume(throwing: SpreadsheetServiceError.authenticationFailed("No authorization code received"))
                     return
                 }
@@ -563,81 +694,68 @@ final class SpreadsheetService: NSObject, SpreadsheetServiceProtocol, ASWebAuthe
                 continuation.resume(throwing: SpreadsheetServiceError.authenticationFailed("Failed to start authentication session"))
             }
         }
+
+        return PendingAuthorization(code: code, codeVerifier: pkce.verifier)
     }
 
-    /// Builds the OAuth authorization URL for the given provider.
-    private func buildAuthorizationURL(for provider: SpreadsheetProvider) -> URL {
-        var components: URLComponents
-
-        switch provider {
-        case .googleSheets:
-            components = URLComponents(string: OAuthConfig.Google.authorizationURL)!
-            components.queryItems = [
-                URLQueryItem(name: "client_id", value: OAuthConfig.Google.clientID),
-                URLQueryItem(name: "redirect_uri", value: OAuthConfig.redirectURI),
-                URLQueryItem(name: "response_type", value: "code"),
-                URLQueryItem(name: "scope", value: OAuthConfig.Google.scope),
-                URLQueryItem(name: "access_type", value: "offline"),
-                URLQueryItem(name: "prompt", value: "consent"),
-            ]
-
-        case .microsoftExcel:
-            components = URLComponents(string: OAuthConfig.Microsoft.authorizationURL)!
-            components.queryItems = [
-                URLQueryItem(name: "client_id", value: OAuthConfig.Microsoft.clientID),
-                URLQueryItem(name: "redirect_uri", value: OAuthConfig.redirectURI),
-                URLQueryItem(name: "response_type", value: "code"),
-                URLQueryItem(name: "scope", value: OAuthConfig.Microsoft.scope),
-                URLQueryItem(name: "response_mode", value: "query"),
-            ]
+    /// Builds the OAuth authorization URL, including the PKCE challenge.
+    private func buildAuthorizationURL(
+        endpoints: OAuthEndpoints,
+        codeChallenge: String,
+        state: String
+    ) throws -> URL {
+        guard var components = URLComponents(string: endpoints.authorizationURL) else {
+            throw SpreadsheetServiceError.authenticationFailed("Invalid authorization endpoint")
         }
 
-        return components.url!
+        var queryItems = [
+            URLQueryItem(name: "client_id", value: endpoints.config.clientID),
+            URLQueryItem(name: "redirect_uri", value: endpoints.config.redirectURI),
+            URLQueryItem(name: "response_type", value: "code"),
+            URLQueryItem(name: "scope", value: endpoints.scope),
+            URLQueryItem(name: "state", value: state),
+            URLQueryItem(name: "code_challenge", value: codeChallenge),
+            URLQueryItem(name: "code_challenge_method", value: PKCEChallenge.method),
+        ]
+
+        // Sorted so the resulting URL is stable and easier to compare in logs.
+        queryItems += endpoints.additionalAuthorizationParameters
+            .sorted { $0.key < $1.key }
+            .map { URLQueryItem(name: $0.key, value: $0.value) }
+
+        components.queryItems = queryItems
+
+        guard let url = components.url else {
+            throw SpreadsheetServiceError.authenticationFailed("Could not construct authorization URL")
+        }
+
+        return url
     }
 
     // MARK: - Token Exchange
 
     /// Exchanges an authorization code for access and refresh tokens.
-    private func exchangeAuthorizationCode(_ code: String, provider: SpreadsheetProvider) async throws {
-        let tokenURL: URL
-        let body: String
+    ///
+    /// No `client_secret` is sent. The `code_verifier` is what proves this app is
+    /// the same client that started the flow.
+    private func exchangeAuthorizationCode(
+        _ authorization: PendingAuthorization,
+        provider: SpreadsheetProvider
+    ) async throws {
+        let endpoints = OAuthEndpoints.forProvider(provider)
 
-        switch provider {
-        case .googleSheets:
-            tokenURL = URL(string: OAuthConfig.Google.tokenURL)!
-            body = [
-                "code=\(code)",
-                "client_id=\(OAuthConfig.Google.clientID)",
-                "client_secret=\(OAuthConfig.Google.clientSecret)",
-                "redirect_uri=\(OAuthConfig.redirectURI)",
-                "grant_type=authorization_code",
-            ].joined(separator: "&")
-
-        case .microsoftExcel:
-            tokenURL = URL(string: OAuthConfig.Microsoft.tokenURL)!
-            body = [
-                "code=\(code)",
-                "client_id=\(OAuthConfig.Microsoft.clientID)",
-                "client_secret=\(OAuthConfig.Microsoft.clientSecret)",
-                "redirect_uri=\(OAuthConfig.redirectURI)",
-                "grant_type=authorization_code",
-                "scope=\(OAuthConfig.Microsoft.scope)",
-            ].joined(separator: "&")
-        }
-
-        var request = URLRequest(url: tokenURL)
-        request.httpMethod = "POST"
-        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-        request.httpBody = body.data(using: .utf8)
-
-        let (data, response) = try await urlSession.data(for: request)
-
-        guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
-            throw SpreadsheetServiceError.tokenExchangeFailed
-        }
-
-        let tokenResponse = try JSONDecoder().decode(OAuthTokenResponse.self, from: data)
-        try storeTokens(tokenResponse, for: provider)
+        try await performTokenRequest(
+            endpoints: endpoints,
+            parameters: [
+                "client_id": endpoints.config.clientID,
+                "code": authorization.code,
+                "code_verifier": authorization.codeVerifier,
+                "redirect_uri": endpoints.config.redirectURI,
+                "grant_type": "authorization_code",
+            ],
+            provider: provider,
+            failure: .tokenExchangeFailed
+        )
     }
 
     // MARK: - Token Refresh
@@ -645,57 +763,114 @@ final class SpreadsheetService: NSObject, SpreadsheetServiceProtocol, ASWebAuthe
     /// Refreshes the access token using the stored refresh token.
     /// Call this when a 401 response is received.
     func refreshAccessToken(for provider: SpreadsheetProvider) async throws {
-        let refreshTokenKey: String
-        let tokenURL: URL
-        let clientID: String
-        let clientSecret: String
-        let scope: String?
+        let endpoints = OAuthEndpoints.forProvider(provider)
 
-        switch provider {
-        case .googleSheets:
-            refreshTokenKey = KeychainKeys.googleRefreshToken
-            tokenURL = URL(string: OAuthConfig.Google.tokenURL)!
-            clientID = OAuthConfig.Google.clientID
-            clientSecret = OAuthConfig.Google.clientSecret
-            scope = nil
-
-        case .microsoftExcel:
-            refreshTokenKey = KeychainKeys.microsoftRefreshToken
-            tokenURL = URL(string: OAuthConfig.Microsoft.tokenURL)!
-            clientID = OAuthConfig.Microsoft.clientID
-            clientSecret = OAuthConfig.Microsoft.clientSecret
-            scope = OAuthConfig.Microsoft.scope
-        }
-
-        guard let refreshToken = loadFromKeychain(key: refreshTokenKey) else {
+        guard let refreshToken = loadFromKeychain(key: KeychainKeys.refreshToken(for: provider)) else {
             throw SpreadsheetServiceError.noRefreshToken
         }
 
-        var bodyComponents = [
-            "refresh_token=\(refreshToken)",
-            "client_id=\(clientID)",
-            "client_secret=\(clientSecret)",
-            "grant_type=refresh_token",
+        var parameters = [
+            "client_id": endpoints.config.clientID,
+            "refresh_token": refreshToken,
+            "grant_type": "refresh_token",
         ]
 
-        if let scope = scope {
-            bodyComponents.append("scope=\(scope)")
+        if endpoints.sendsScopeOnRefresh {
+            parameters["scope"] = endpoints.scope
+        }
+
+        // Again no client_secret — a public client authenticates with client_id
+        // alone on the refresh grant.
+        try await performTokenRequest(
+            endpoints: endpoints,
+            parameters: parameters,
+            provider: provider,
+            failure: .tokenRefreshFailed
+        )
+
+        logger.info("Token refreshed successfully for \(String(describing: provider))")
+    }
+
+    // MARK: - Token Endpoint Plumbing
+
+    /// POSTs a form-encoded request to the provider's token endpoint and stores
+    /// the resulting tokens.
+    private func performTokenRequest(
+        endpoints: OAuthEndpoints,
+        parameters: [String: String],
+        provider: SpreadsheetProvider,
+        failure: SpreadsheetServiceError
+    ) async throws {
+        guard let tokenURL = URL(string: endpoints.tokenURL) else {
+            throw SpreadsheetServiceError.networkError("Invalid token endpoint")
         }
 
         var request = URLRequest(url: tokenURL)
         request.httpMethod = "POST"
         request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-        request.httpBody = bodyComponents.joined(separator: "&").data(using: .utf8)
+        request.httpBody = Self.formURLEncodedBody(parameters)
 
         let (data, response) = try await urlSession.data(for: request)
 
-        guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
-            throw SpreadsheetServiceError.tokenRefreshFailed
+        guard let httpResponse = response as? HTTPURLResponse else {
+            throw SpreadsheetServiceError.networkError("Invalid response from token endpoint")
+        }
+
+        guard httpResponse.statusCode == 200 else {
+            // Log only the OAuth error fields. The body of a *successful*
+            // response contains tokens, so it is never logged wholesale.
+            logger.error(
+                "Token request failed with status \(httpResponse.statusCode): \(Self.oauthErrorDescription(from: data), privacy: .public)"
+            )
+            throw failure
         }
 
         let tokenResponse = try JSONDecoder().decode(OAuthTokenResponse.self, from: data)
         try storeTokens(tokenResponse, for: provider)
-        logger.info("Token refreshed successfully for \(String(describing: provider))")
+    }
+
+    /// Percent-encodes parameters as `application/x-www-form-urlencoded`.
+    ///
+    /// Interpolating values straight into the body corrupts anything containing
+    /// `+`, `/`, `=` or `&`, which is entirely realistic for authorization codes
+    /// and refresh tokens.
+    private static func formURLEncodedBody(_ parameters: [String: String]) -> Data {
+        // Unreserved set from RFC 3986 §2.3; everything else gets escaped.
+        var allowed = CharacterSet.alphanumerics
+        allowed.insert(charactersIn: "-._~")
+
+        let body = parameters
+            .sorted { $0.key < $1.key }
+            .map { key, value in
+                let encodedKey = key.addingPercentEncoding(withAllowedCharacters: allowed) ?? key
+                let encodedValue = value.addingPercentEncoding(withAllowedCharacters: allowed) ?? value
+                return "\(encodedKey)=\(encodedValue)"
+            }
+            .joined(separator: "&")
+
+        return Data(body.utf8)
+    }
+
+    /// Extracts `error` / `error_description` from an OAuth error response so
+    /// failures are diagnosable without logging token material.
+    private static func oauthErrorDescription(from data: Data) -> String {
+        guard let json = try? JSONSerialization.jsonObject(with: data) as? [String: Any] else {
+            return "unparseable error response"
+        }
+
+        let code = json["error"] as? String
+        let description = json["error_description"] as? String
+
+        switch (code, description) {
+        case let (code?, description?):
+            return "\(code): \(description)"
+        case let (code?, nil):
+            return code
+        case let (nil, description?):
+            return description
+        case (nil, nil):
+            return "no error details in response"
+        }
     }
 
     /// Returns the current access token for the configured provider, refreshing if needed.
@@ -704,15 +879,7 @@ final class SpreadsheetService: NSObject, SpreadsheetServiceProtocol, ASWebAuthe
             throw SpreadsheetServiceError.notConfigured
         }
 
-        let accessTokenKey: String
-        switch provider {
-        case .googleSheets:
-            accessTokenKey = KeychainKeys.googleAccessToken
-        case .microsoftExcel:
-            accessTokenKey = KeychainKeys.microsoftAccessToken
-        }
-
-        guard let token = loadFromKeychain(key: accessTokenKey) else {
+        guard let token = loadFromKeychain(key: KeychainKeys.accessToken(for: provider)) else {
             throw SpreadsheetServiceError.noAccessToken
         }
 
@@ -732,22 +899,18 @@ final class SpreadsheetService: NSObject, SpreadsheetServiceProtocol, ASWebAuthe
 
     /// Stores access and refresh tokens in the macOS Keychain.
     private func storeTokens(_ tokenResponse: OAuthTokenResponse, for provider: SpreadsheetProvider) throws {
-        let accessTokenKey: String
-        let refreshTokenKey: String
+        try saveToKeychain(
+            key: KeychainKeys.accessToken(for: provider),
+            value: tokenResponse.accessToken
+        )
 
-        switch provider {
-        case .googleSheets:
-            accessTokenKey = KeychainKeys.googleAccessToken
-            refreshTokenKey = KeychainKeys.googleRefreshToken
-        case .microsoftExcel:
-            accessTokenKey = KeychainKeys.microsoftAccessToken
-            refreshTokenKey = KeychainKeys.microsoftRefreshToken
-        }
-
-        try saveToKeychain(key: accessTokenKey, value: tokenResponse.accessToken)
-
+        // A refresh grant response does not always include a new refresh token;
+        // keep the existing one when it is absent.
         if let refreshToken = tokenResponse.refreshToken {
-            try saveToKeychain(key: refreshTokenKey, value: refreshToken)
+            try saveToKeychain(
+                key: KeychainKeys.refreshToken(for: provider),
+                value: refreshToken
+            )
         }
     }
 
@@ -845,6 +1008,8 @@ private struct OAuthTokenResponse: Decodable {
 enum SpreadsheetServiceError: LocalizedError {
     case notConfigured
     case authenticationFailed(String)
+    case stateMissing
+    case stateMismatch
     case tokenExchangeFailed
     case tokenRefreshFailed
     case noRefreshToken
@@ -859,6 +1024,10 @@ enum SpreadsheetServiceError: LocalizedError {
             return "Spreadsheet service has not been configured. Call configure() first."
         case .authenticationFailed(let reason):
             return "Authentication failed: \(reason)"
+        case .stateMissing:
+            return "The sign-in response was missing its security token. Please try connecting again."
+        case .stateMismatch:
+            return "The sign-in response did not match the request and was rejected. Please try connecting again."
         case .tokenExchangeFailed:
             return "Failed to exchange authorization code for tokens."
         case .tokenRefreshFailed:

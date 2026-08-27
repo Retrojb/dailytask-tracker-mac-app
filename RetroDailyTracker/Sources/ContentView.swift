@@ -7,12 +7,21 @@ struct ContentView: View {
     /// Shared SpreadsheetService instance for syncing entries.
     private let spreadsheetService: SpreadsheetServiceProtocol
 
+    /// Shared persistence store, held rather than constructed in `body` so that a
+    /// re-render does not build a new store on every pass.
+    private let persistenceStore: PersistenceStoreProtocol
+
     /// Observable monitor for notification permission state.
     private var permissionMonitor = NotificationPermissionMonitor.shared
 
-    init(selectedTab: Binding<AppTab>, spreadsheetService: SpreadsheetServiceProtocol = SpreadsheetService()) {
+    init(
+        selectedTab: Binding<AppTab>,
+        spreadsheetService: SpreadsheetServiceProtocol = SpreadsheetService(),
+        persistenceStore: PersistenceStoreProtocol = PersistenceStore()
+    ) {
         self._selectedTab = selectedTab
         self.spreadsheetService = spreadsheetService
+        self.persistenceStore = persistenceStore
     }
 
     var body: some View {
@@ -25,7 +34,7 @@ struct ContentView: View {
             TabView(selection: $selectedTab) {
                 // Entry Form Tab
                 NavigationStack {
-                    EntryFormView(persistenceStore: PersistenceStore(), spreadsheetService: spreadsheetService)
+                    EntryFormView(persistenceStore: persistenceStore, spreadsheetService: spreadsheetService)
                 }
                 .tabItem {
                     Label(AppTab.entryForm.title, systemImage: AppTab.entryForm.systemImage)

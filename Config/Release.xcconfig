@@ -1,0 +1,12 @@
+// =============================================================================
+// Release.xcconfig — Release-configuration build settings.
+//
+// Shared values live in Base.xcconfig. Add Release-only overrides below the
+// include; assignments later in the file win.
+//
+// For a real distribution build, supply the production OAuth client IDs here or
+// via the CI environment rather than relying on a developer's local
+// Config/Local.xcconfig, which is not checked in.
+// =============================================================================
+
+#include "Base.xcconfig"
